@@ -1,4 +1,4 @@
-﻿using Desafio_BackEnd.Domain.Interfaces;
+﻿using Desafio_BackEnd.Domain.Interfaces.Services;
 using Desafio_BackEnd.Domain.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -20,13 +20,13 @@ namespace Desafio_BackEnd.Controllers
 
 
         [HttpGet("")]
-        public IActionResult Motos()
+        public IActionResult GetMotoByPlate()
         {
             return Ok();
         }
 
         [HttpGet("{id}")]
-        public IActionResult Motos(string id)
+        public IActionResult GetMotoById(string id)
         {
             return Ok();
         }
@@ -34,13 +34,16 @@ namespace Desafio_BackEnd.Controllers
         [HttpPost("")]
         [ProducesResponseType(typeof(Motorcycle), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> MotosAsync([FromBody] Motorcycle moto)
+        public async Task<IActionResult> CreateMotosAsync([FromBody] Motorcycle moto)
         {
             var result = await _validator.ValidateAsync(moto);
 
             if (!result.IsValid)
             {
-                return BadRequest("Dados inválidos.");
+                var errorMessages = result.Errors.Select(x => x.ErrorMessage).ToList();
+                Console.WriteLine(errorMessages);
+                //return BadRequest("Dados inválidos.");
+                return BadRequest(errorMessages);
             }
 
             await _motorcycleService.CreateMotorcycleAsync(moto);

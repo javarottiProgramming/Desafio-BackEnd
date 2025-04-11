@@ -1,6 +1,6 @@
 ﻿using Desafio_BackEnd.Domain.Models;
 
-namespace Desafio_BackEnd.Domain.Interfaces
+namespace Desafio_BackEnd.Domain.Interfaces.Services
 {
     public interface IMotorcycleService
     {

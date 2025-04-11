@@ -1,4 +1,4 @@
-using Desafio_BackEnd.Domain.Interfaces;
+using Desafio_BackEnd.Domain.Interfaces.Services;
 using Desafio_BackEnd.Domain.Models;
 using Desafio_BackEnd.Services;
 using FluentValidation;
@@ -34,5 +34,8 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Configuração das rotas do MotosController
+//app.MapMotosRoutes();
 
 app.Run();

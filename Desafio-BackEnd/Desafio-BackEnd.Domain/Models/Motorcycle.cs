@@ -31,9 +31,9 @@ namespace Desafio_BackEnd.Domain.Models
         public MotorcycleValidator()
         {
             RuleFor(x => x.Id).NotNull();
-            RuleFor(x => x.Year).NotNull();
-            RuleFor(x => x.Model).NotEmpty();
-            RuleFor(x => x.Plate).NotEmpty();
+            RuleFor(x => x.Year).NotNull().InclusiveBetween(1951, DateTime.UtcNow.Year);
+            RuleFor(x => x.Model).NotNull().NotEmpty().MaximumLength(100);
+            RuleFor(x => x.Plate).NotNull().NotEmpty().MaximumLength(8); //TODO Melhorar validacoes?
         }
     }
 }
