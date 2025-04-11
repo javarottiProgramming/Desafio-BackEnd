@@ -28,7 +28,7 @@ namespace Desafio_BackEnd.Controllers
         /// <param name="moto"></param>
         /// <returns></returns>
         [HttpPost("")]
-        [ProducesResponseType(typeof(Motorcycle), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> CreateMotosAsync([FromBody] Motorcycle moto)
         {
@@ -53,7 +53,7 @@ namespace Desafio_BackEnd.Controllers
         [HttpGet("{plate}")]
         [ProducesResponseType(typeof(Motorcycle), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetMotoByPlate(string plate)
+        public async Task<IActionResult> GetMotoByPlateAsync(string plate)
         {
             var moto = await _motorcycleService.GetMotorcycleByPlateAsync(plate);
 
@@ -68,7 +68,7 @@ namespace Desafio_BackEnd.Controllers
         [HttpPut("{id}/placa")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> Motos(string id, [FromBody] MotorcycleUpdate moto)
+        public async Task<IActionResult> MotosAsync(string id, [FromBody] MotorcycleUpdate moto)
         {
             var result = await _validatorUp.ValidateAsync(moto);
 
@@ -98,7 +98,7 @@ namespace Desafio_BackEnd.Controllers
         [ProducesResponseType(typeof(Motorcycle), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> GetMotoById(string id)
+        public async Task<IActionResult> GetMotoByIdAsync(string id)
         {
             //TODO Implementar 400
             var moto = await _motorcycleService.GetMotorcycleByIdAsync(id);
@@ -115,7 +115,7 @@ namespace Desafio_BackEnd.Controllers
         [HttpDelete("{id}")]
         [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> MotosDelete(string id)
+        public async Task<IActionResult> MotosDeleteAsync(string id)
         {
             //TODO Implementar 400
             var moto = await _motorcycleService.DeleteMotorcycleAsync(id);

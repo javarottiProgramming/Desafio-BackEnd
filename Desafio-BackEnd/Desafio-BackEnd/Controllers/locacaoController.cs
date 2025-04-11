@@ -3,7 +3,7 @@
 namespace Desafio_BackEnd.Controllers
 {
     [Route("locação")]
-    public class locacaoController : Controller
+    public class LocacaoController : Controller
     {
         [HttpGet("{id}")]
         public IActionResult Locacao()

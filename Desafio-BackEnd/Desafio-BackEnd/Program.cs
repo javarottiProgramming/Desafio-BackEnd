@@ -12,6 +12,7 @@ builder.Services.AddControllers();
 // Add FluentValidation
 builder.Services.AddScoped<IValidator<Motorcycle>, MotorcycleValidator>();
 builder.Services.AddScoped<IValidator<MotorcycleUpdate>, MotorcycleUpdateValidator>();
+builder.Services.AddScoped<IValidator<DeliveryMan>, DeliveryManValidator>();
 
 //Add Services 
 builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
@@ -19,7 +20,21 @@ builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+//TODO Configurar swagger para aparecer descrição das rotas
+builder.Services.AddSwaggerGen(c =>
+{
+    //c.SwaggerDoc("v1",
+    //    new Info
+    //    {
+    //        title = "My API - V1",
+    //        version = "v1"
+    //    }
+    // );
+
+    //var filePath = Path.Combine(System.AppContext.BaseDirectory, "MyApi.xml");
+    //c.IncludeXmlComments(filePath);
+});
 
 var app = builder.Build();
 
