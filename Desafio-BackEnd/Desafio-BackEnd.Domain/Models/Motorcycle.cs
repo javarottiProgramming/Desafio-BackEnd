@@ -26,6 +26,12 @@ namespace Desafio_BackEnd.Domain.Models
         public string Plate { get; set; }
     }
 
+    public class MotorcycleUpdate
+    {
+        public string Plate { get; set; }
+
+    }
+
     public class MotorcycleValidator : AbstractValidator<Motorcycle>
     {
         public MotorcycleValidator()
@@ -33,6 +39,14 @@ namespace Desafio_BackEnd.Domain.Models
             RuleFor(x => x.Id).NotNull();
             RuleFor(x => x.Year).NotNull().InclusiveBetween(1951, DateTime.UtcNow.Year);
             RuleFor(x => x.Model).NotNull().NotEmpty().MaximumLength(100);
+            RuleFor(x => x.Plate).NotNull().NotEmpty().MaximumLength(8); //TODO Melhorar validacoes?
+        }
+    }
+
+    public class MotorcycleUpdateValidator : AbstractValidator<MotorcycleUpdate>
+    {
+        public MotorcycleUpdateValidator()
+        {
             RuleFor(x => x.Plate).NotNull().NotEmpty().MaximumLength(8); //TODO Melhorar validacoes?
         }
     }

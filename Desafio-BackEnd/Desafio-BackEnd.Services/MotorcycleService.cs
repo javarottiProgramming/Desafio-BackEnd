@@ -21,22 +21,29 @@ namespace Desafio_BackEnd.Services
 
         public Task<bool> DeleteMotorcycleAsync(string id)
         {
-            throw new NotImplementedException();
+            //TODO: Implementar a exclusão da moto no banco de dados.
+            return Task.FromResult(true);
         }
 
-        public Task<IEnumerable<Motorcycle>> GetAllMotorcyclesAsync()
+        public Task<Motorcycle> GetMotorcycleByPlateAsync(string plate)
         {
-            throw new NotImplementedException();
+            //TODO: Implementar a busca da moto pela placa no banco de dados.
+            return Task.FromResult(new Motorcycle { Plate = plate });
         }
 
         public Task<Motorcycle> GetMotorcycleByIdAsync(string id)
         {
-            throw new NotImplementedException();
+            //TODO: Implementar a busca da moto pelo ID no banco de dados.
+            return Task.FromResult(new Motorcycle { Id = id });
         }
 
-        public Task<bool> UpdateMotorcycleAsync(string id, Motorcycle motorcycle)
+        public Task<bool> UpdateMotorcycleAsync(string id, MotorcycleUpdate motorcycle)
         {
-            throw new NotImplementedException();
+            Console.WriteLine($"Atualizando placa da moto: {id}");
+
+            //TODO: Implementar a atualização da placa da moto no banco de dados.
+            return Task.FromResult(true);
+
         }
     }
 }

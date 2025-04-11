@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 
 // Add FluentValidation
 builder.Services.AddScoped<IValidator<Motorcycle>, MotorcycleValidator>();
+builder.Services.AddScoped<IValidator<MotorcycleUpdate>, MotorcycleUpdateValidator>();
 
 //Add Services 
 builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
