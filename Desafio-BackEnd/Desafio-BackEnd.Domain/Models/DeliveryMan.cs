@@ -45,14 +45,4 @@ namespace Desafio_BackEnd.Domain.Models
 	- O número da CNH é único e não pode se repetir.
      */
 
-    public class DeliveryManValidator : AbstractValidator<DeliveryMan>
-    {
-        public DeliveryManValidator()
-        {
-            RuleFor(x => x.Id).NotNull();
-            RuleFor(x => x.DriversLicenseCategory)
-                .NotNull().MaximumLength(3)
-                .Must(x => x == "A" || x == "B" || x == "A+B");
-        }
-    }
 }

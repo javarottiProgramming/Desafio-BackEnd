@@ -1,5 +1,6 @@
 using Desafio_BackEnd.Domain.Interfaces.Services;
 using Desafio_BackEnd.Domain.Models;
+using Desafio_BackEnd.Domain.Validators;
 using Desafio_BackEnd.Services;
 using FluentValidation;
 
@@ -13,11 +14,13 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IValidator<Motorcycle>, MotorcycleValidator>();
 builder.Services.AddScoped<IValidator<MotorcycleUpdate>, MotorcycleUpdateValidator>();
 builder.Services.AddScoped<IValidator<DeliveryMan>, DeliveryManValidator>();
+builder.Services.AddScoped<IValidator<Rental>, RentalValidator>();
 
 
 //Add Services 
 builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
 builder.Services.AddScoped<IDeliveryMenService, DeliveryMenService>();
+builder.Services.AddScoped<IRentalService, RentalService>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
