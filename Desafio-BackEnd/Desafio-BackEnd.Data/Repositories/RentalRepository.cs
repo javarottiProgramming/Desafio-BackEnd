@@ -16,16 +16,19 @@ namespace Desafio_BackEnd.Data.Repositories
 
         }
 
-        public async Task<IEnumerable<Rental>> GetAllRentalsAsync()
+        public async Task<Rental> GetRentalByIdAsync(string id)
         {
             using (IDbConnection connection = _databaseConnection.CreateConnection())
             {
-                
-                string query = $"SELECT * FROM {TABLE_NAME}";
-                var rental =  await connection.QueryAsync<Rental>(query);
+                string query = $"SELECT * FROM {TABLE_NAME} WHERE id = @id";
+                var rental = await connection.QueryFirstOrDefaultAsync<Rental>(query, new { id = Convert.ToInt32(id) });
                 return rental;
             }
         }
+
+
+
+
 
         public async Task AddRentalAsync(Rental rental)
         {

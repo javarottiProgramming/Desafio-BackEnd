@@ -1,8 +1,10 @@
+using Dapper.FluentMap;
 using Desafio_BackEnd.Data;
 using Desafio_BackEnd.Data.Repositories;
 using Desafio_BackEnd.Domain.Interfaces.Repositories;
 using Desafio_BackEnd.Domain.Interfaces.Services;
-using Desafio_BackEnd.Domain.Mappings;
+using Desafio_BackEnd.Domain.Mappings.Entities;
+using Desafio_BackEnd.Domain.Mappings.Profiles;
 using Desafio_BackEnd.Domain.Models;
 using Desafio_BackEnd.Domain.Validators;
 using Desafio_BackEnd.Services;
@@ -12,6 +14,14 @@ using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+//TODO criar arquivos de extensao para diminuir o tamanho do Program.cs
+
+
+FluentMapper.Initialize(config =>
+{
+    config.AddMap(new RentalMap());
+});
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -20,65 +30,49 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IValidator<MotorcycleRequest>, MotorcycleValidator>();
 builder.Services.AddScoped<IValidator<MotorcycleUpdate>, MotorcycleUpdateValidator>();
 builder.Services.AddScoped<IValidator<DeliveryManRequest>, DeliveryManValidator>();
-builder.Services.AddScoped<IValidator<RentalDto>, RentalValidator>();
+builder.Services.AddScoped<IValidator<CreateRentalModel>, RentalValidator>();
 
 
-//Add Services 
+//Add Services
 builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
 builder.Services.AddScoped<IDeliveryMenService, DeliveryMenService>();
 builder.Services.AddScoped<IRentalService, RentalService>();
 
+
 builder.Services.AddSingleton(new DatabaseConnection(builder.Configuration.GetConnectionString("PostgreSqlConnection")));
+
+// Adicionar Repositories
 builder.Services.AddScoped<IRentalRepository, RentalRepository>();
 
 
 // Adicionar AutoMapper
-builder.Services.AddAutoMapper(typeof(RentalReturnDtoMapperProfile));
+builder.Services.AddAutoMapper(typeof(RentalDtoMapperProfile));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 
-//TODO Configurar swagger para aparecer descrição das rotas
+//TODO Configurar swagger para aparecer descrição das rotas e esconder schemas
 builder.Services.AddSwaggerGen(c =>
 {
-    //c.SwaggerDoc("v1",
-    //    new Info
-    //    {
-    //        title = "My API - V1",
-    //        version = "v1"
-    //    }
-    // );
-
-    //var filePath = Path.Combine(System.AppContext.BaseDirectory, "MyApi.xml");
-    //c.IncludeXmlComments(filePath);
-
     var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
-    //c.MapType<RentalReturnDate>(() => new OpenApiSchema { Type = "object" });
 });
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-
     app.UseDeveloperExceptionPage();
-    //app.UseStaticFiles();
 
     app.UseSwagger();
     app.UseSwaggerUI(o =>
     {
         o.DefaultModelsExpandDepth(-1);
-
+        o.DocumentTitle = "Desafio BackEnd - API";
     });
-
-    //app.UseSwaggerUI(c =>
-    //{
-    //    c.SwaggerEndpoint("/swagger/v1/swagger.json", "API V1");
-    //   // c.InjectJavascript("/swagger-custom.js"); // Adiciona o script customizado
-    //});
 
 }
 
@@ -87,8 +81,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
-// Configuração das rotas do MotosController
-//app.MapMotosRoutes();
 
 app.Run();

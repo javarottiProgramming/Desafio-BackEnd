@@ -1,9 +1,10 @@
-﻿using Desafio_BackEnd.Domain.Models;
+﻿using Desafio_BackEnd.Domain.Dtos;
+using Desafio_BackEnd.Domain.Models;
 using FluentValidation;
 
 namespace Desafio_BackEnd.Domain.Validators
 {
-    public class RentalValidator : AbstractValidator<RentalDto>
+    public class RentalValidator : AbstractValidator<CreateRentalModel>
     {
         public RentalValidator()
         {
@@ -26,7 +27,7 @@ namespace Desafio_BackEnd.Domain.Validators
         }
     }
 
-    public class RentalReturnDatelidator : AbstractValidator<RentalReturnDate>
+    public class RentalReturnDatelidator : AbstractValidator<RentalReturnDto>
     {
         public RentalReturnDatelidator()
         {

@@ -1,17 +1,18 @@
-﻿using Desafio_BackEnd.Domain.Models;
+﻿using Desafio_BackEnd.Domain.Dtos;
+using Desafio_BackEnd.Domain.Models;
 
 namespace Desafio_BackEnd.Domain.Interfaces.Services
 {
     public interface IRentalService
     {
         //CreateRentalAsync
-        Task<bool> CreateRentalAsync(RentalDto rental);
+        Task<bool> CreateRentalAsync(CreateRentalModel rental);
 
         //GetRentalByIdAsync
-        Task<RentalReturnDto> GetRentalByIdAsync(string id);
+        Task<RentalDto> GetRentalByIdAsync(string id);
 
         //SendRentalReturnByIdAsync
-        Task<bool> SendRentalReturnByIdAsync(string id, RentalReturnDate rentalReturnDate);
+        Task<bool> SendRentalReturnByIdAsync(string id, RentalReturnDto rentalReturnDate);
 
     }
 }

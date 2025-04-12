@@ -1,4 +1,6 @@
-﻿using Desafio_BackEnd.Domain.Interfaces.Repositories;
+﻿using AutoMapper;
+using Desafio_BackEnd.Domain.Dtos;
+using Desafio_BackEnd.Domain.Interfaces.Repositories;
 using Desafio_BackEnd.Domain.Interfaces.Services;
 using Desafio_BackEnd.Domain.Models;
 
@@ -7,13 +9,15 @@ namespace Desafio_BackEnd.Services
     public class RentalService : IRentalService
     {
         private readonly IRentalRepository _rentalRepository;
+        private readonly IMapper _mapper;
 
-        public RentalService(IRentalRepository rentalRepository)
+        public RentalService(IRentalRepository rentalRepository, IMapper mapper)
         {
             _rentalRepository = rentalRepository;
+            _mapper = mapper;
         }
 
-        public async Task<bool> CreateRentalAsync(RentalDto rental)
+        public async Task<bool> CreateRentalAsync(CreateRentalModel rental)
         {
             //TODO Implementar busca em repositorio para verificar se o entregador possui carteira A
             //Somente entregadores habilitados na categoria A podem efetuar uma locação
@@ -27,16 +31,23 @@ namespace Desafio_BackEnd.Services
             return await Task.FromResult(true);
 
         }
-        public async Task<RentalReturnDto> GetRentalByIdAsync(string id)
+        public async Task<RentalDto> GetRentalByIdAsync(string id)
         {
 
-            var all = await _rentalRepository.GetAllRentalsAsync();
+            var rental = await _rentalRepository.GetRentalByIdAsync(id);
 
-            return await Task.FromResult(new RentalReturnDto());
+            if (rental == null)
+            {
+                throw new Exception("Locação não encontrada");
+            }
+
+            var rentalDto = _mapper.Map<RentalDto>(rental);
+
+            return rentalDto;
 
         }
 
-        public async Task<bool> SendRentalReturnByIdAsync(string id, RentalReturnDate rentalReturnDate)
+        public async Task<bool> SendRentalReturnByIdAsync(string id, RentalReturnDto rentalReturnDate)
         {
             /*
              
