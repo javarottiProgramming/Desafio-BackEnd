@@ -50,8 +50,38 @@ namespace Desafio_BackEnd.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost("/{id}/cnh")]
-        public async Task<IActionResult> SendDocumentImageAsync(string id, [FromBody] string base64String)//TODO verificar
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> SendDocumentImageAsync(string id, [FromBody] DeliveryManFileUpload file)
         {
+            //TODO validar formato da imagem e valido extensao png ou bmp
+            //TODO corrigir parametro string($binary)
+            if (file == null || string.IsNullOrEmpty(file.DocumentImgBase64))
+            {
+                return BadRequest("No file uploaded.");
+            }
+
+            //validar se base64 é válida
+            if (!file.DocumentImgBase64.StartsWith("data:image/png;base64,"))
+            {
+                return BadRequest("Invalid base64 string.");
+            }
+
+            //converter base64 para byte[]
+            var fileBytes = Convert.FromBase64String(file.DocumentImgBase64);
+
+            if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "uploads")))
+            {
+                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "uploads"));
+            }
+
+            // Exemplo: salvar o arquivo em um diretório
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", $"{id}");
+
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                await fileStream.WriteAsync(fileBytes, 0, fileBytes.Length);
+            }
             return Ok();
         }
     }

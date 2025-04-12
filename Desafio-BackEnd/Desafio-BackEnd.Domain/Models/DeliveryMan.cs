@@ -1,12 +1,14 @@
 ﻿using FluentValidation;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Desafio_BackEnd.Domain.Models
 {
     public class DeliveryMan
     {
         [DisplayName("Identificador")]
-        public string Id { get; set; }
+        public required string Id { get; set; }
 
         [DisplayName("Nome")]
         public string Name { get; set; }
@@ -15,6 +17,17 @@ namespace Desafio_BackEnd.Domain.Models
         public string DocumentNumber { get; set; }
         public string DocumentType { get; set; }
         public string DocumentImgBase64 { get; set; }
+    }
+
+    public class DeliveryManFileUpload
+    {
+        [JsonPropertyName("imagem_cnh")]
+        
+        public required string DocumentImgBase64 { get; set; }
+
+
+
+
     }
 
     /*
