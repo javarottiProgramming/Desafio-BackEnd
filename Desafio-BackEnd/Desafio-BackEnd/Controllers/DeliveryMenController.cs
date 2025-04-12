@@ -1,4 +1,5 @@
-﻿using Desafio_BackEnd.Domain.Models;
+﻿using Desafio_BackEnd.Domain.Interfaces.Services;
+using Desafio_BackEnd.Domain.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,10 +9,12 @@ namespace Desafio_BackEnd.Controllers
     public class DeliveryMenController : Controller
     {
         private readonly IValidator<DeliveryMan> _validator;
+        private readonly IDeliveryMenService _deliveryMenService;
 
-        public DeliveryMenController(IValidator<DeliveryMan> validator)
+        public DeliveryMenController(IValidator<DeliveryMan> validator, IDeliveryMenService deliveryMenService)
         {
             _validator = validator;
+            _deliveryMenService = deliveryMenService;
         }
 
         /// <summary>
@@ -32,15 +35,14 @@ namespace Desafio_BackEnd.Controllers
                 foreach (var item in errorMessages)
                 {
                     Console.WriteLine(item);
-
                 }
+
                 return BadRequest("Dados inválidos.");
             }
 
-            //await _motorcycleService.CreateMotorcycleAsync(moto);
+            await _deliveryMenService.CreateDeliveryManAsync(deliveryMan);
 
             return Created();
-            
         }
 
 
@@ -56,32 +58,16 @@ namespace Desafio_BackEnd.Controllers
         {
             //TODO validar formato da imagem e valido extensao png ou bmp
             //TODO corrigir parametro string($binary)
+
             if (file == null || string.IsNullOrEmpty(file.DocumentImgBase64))
             {
                 return BadRequest("No file uploaded.");
             }
 
-            //validar se base64 é válida
-            if (!file.DocumentImgBase64.StartsWith("data:image/png;base64,"))
-            {
-                return BadRequest("Invalid base64 string.");
-            }
 
-            //converter base64 para byte[]
-            var fileBytes = Convert.FromBase64String(file.DocumentImgBase64);
+            // Chamar o serviço para enviar a imagem do documento
+            var result = await _deliveryMenService.SendDocumentImageAsync(id, file.DocumentImgBase64);
 
-            if (!Directory.Exists(Path.Combine(Directory.GetCurrentDirectory(), "uploads")))
-            {
-                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), "uploads"));
-            }
-
-            // Exemplo: salvar o arquivo em um diretório
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", $"{id}");
-
-            using (var fileStream = new FileStream(filePath, FileMode.Create))
-            {
-                await fileStream.WriteAsync(fileBytes, 0, fileBytes.Length);
-            }
             return Ok();
         }
     }

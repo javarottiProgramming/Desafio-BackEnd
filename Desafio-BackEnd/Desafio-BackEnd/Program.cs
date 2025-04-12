@@ -14,8 +14,10 @@ builder.Services.AddScoped<IValidator<Motorcycle>, MotorcycleValidator>();
 builder.Services.AddScoped<IValidator<MotorcycleUpdate>, MotorcycleUpdateValidator>();
 builder.Services.AddScoped<IValidator<DeliveryMan>, DeliveryManValidator>();
 
+
 //Add Services 
 builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
+builder.Services.AddScoped<IDeliveryMenService, DeliveryMenService>();
 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
