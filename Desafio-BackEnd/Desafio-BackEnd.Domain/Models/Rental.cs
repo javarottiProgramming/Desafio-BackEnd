@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Runtime.Intrinsics.X86;
+using System.Text.Json.Serialization;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Desafio_BackEnd.Domain.Models
 {
@@ -14,16 +16,42 @@ namespace Desafio_BackEnd.Domain.Models
         public string MotoId { get; set; }
 
         [JsonPropertyName("data_inicio")]
-        public DateTime StartDate { get; set; }
+        public required DateTime StartDate { get; set; }
 
         [JsonPropertyName("data_termino")]
-        public DateTime EndDate { get; set; }
+        public required DateTime EndDate { get; set; }
 
         [JsonPropertyName("data_previsao_termino")]
-        public DateTime ExpectedEndDate { get; set; }
+        public required DateTime ExpectedEndDate { get; set; }
 
         [JsonPropertyName("plano")]
         public int Plan { get; set; }
+
+        /// <summary>
+        /// Valor da diária
+        /// </summary>
+        /// 
+        [JsonIgnore]
+        public decimal DailyValue
+        {
+            get
+            {
+                return CalculateDailyValue(this.Plan);
+            }
+        }
+
+        private decimal CalculateDailyValue(int plan)
+        {
+            return plan switch
+            {
+                7 => 30.0m,
+                15 => 28.0m,
+                30 => 22.0m,
+                45 => 20.0m,
+                50 => 18.0m,
+                _ => throw new ArgumentException("Plano inválido.")
+            };
+        }
     }
 
     /// <summary>

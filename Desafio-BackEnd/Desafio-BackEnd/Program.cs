@@ -3,6 +3,8 @@ using Desafio_BackEnd.Domain.Models;
 using Desafio_BackEnd.Domain.Validators;
 using Desafio_BackEnd.Services;
 using FluentValidation;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -39,6 +41,11 @@ builder.Services.AddSwaggerGen(c =>
 
     //var filePath = Path.Combine(System.AppContext.BaseDirectory, "MyApi.xml");
     //c.IncludeXmlComments(filePath);
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath);
+    //c.MapType<RentalReturnDate>(() => new OpenApiSchema { Type = "object" });
 });
 
 var app = builder.Build();
@@ -50,7 +57,11 @@ if (app.Environment.IsDevelopment())
     //app.UseStaticFiles();
 
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(o =>
+    {
+        o.DefaultModelsExpandDepth(-1);
+
+    });
 
     //app.UseSwaggerUI(c =>
     //{

@@ -7,6 +7,7 @@
     <RootNamespace>Desafio_BackEnd</RootNamespace>
     <UserSecretsId>f108f84c-f277-4470-89da-34fdd27652c3</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
