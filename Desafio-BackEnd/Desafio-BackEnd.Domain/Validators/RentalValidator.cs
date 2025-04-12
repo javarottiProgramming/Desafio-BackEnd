@@ -3,13 +3,13 @@ using FluentValidation;
 
 namespace Desafio_BackEnd.Domain.Validators
 {
-    public class RentalValidator : AbstractValidator<Rental>
+    public class RentalValidator : AbstractValidator<RentalDto>
     {
         public RentalValidator()
         {
 
             RuleFor(x => x.DeliveryManId).NotNull().NotEmpty().MaximumLength(50);
-            RuleFor(x => x.MotoId).NotNull().NotEmpty().MaximumLength(50);
+            RuleFor(x => x.MotorcycleId).NotNull().NotEmpty().MaximumLength(50);
             RuleFor(x => x.StartDate).NotNull().Must(BeAValidDate);
             RuleFor(x => x.EndDate).NotNull().Must(BeAValidDate);
             RuleFor(x => x.ExpectedEndDate).NotNull().Must(BeAValidDate);

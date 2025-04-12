@@ -2,13 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>Desafio_BackEnd.Services</RootNamespace>
+    <RootNamespace>Desafio_BackEnd.Data</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Desafio-BackEnd.Data\Desafio-BackEnd.Data.csproj" />
+    <Folder Include="Dapper\" />
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
   </ItemGroup>
 

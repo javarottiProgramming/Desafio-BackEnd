@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Desafio-BackEnd.Data\Desafio-BackEnd.Data.csproj" />
     <ProjectReference Include="..\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
     <ProjectReference Include="..\Desafio-BackEnd.Services\Desafio-BackEnd.Services.csproj" />
   </ItemGroup>

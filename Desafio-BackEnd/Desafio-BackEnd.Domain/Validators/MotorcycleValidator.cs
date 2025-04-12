@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Desafio_BackEnd.Domain.Validators
 {
-    public class MotorcycleValidator : AbstractValidator<Motorcycle>
+    public class MotorcycleValidator : AbstractValidator<MotorcycleRequest>
     {
         public MotorcycleValidator()
         {

@@ -9,10 +9,10 @@ namespace Desafio_BackEnd.Controllers
     public class RentalController : Controller
     {
         private readonly IRentalService _rentalService;
-        private readonly IValidator<Rental> _validator;
+        private readonly IValidator<RentalDto> _validator;
 
 
-        public RentalController(IRentalService rentalService, IValidator<Rental> validator)
+        public RentalController(IRentalService rentalService, IValidator<RentalDto> validator)
         {
             _rentalService = rentalService;
             _validator = validator;
@@ -21,7 +21,7 @@ namespace Desafio_BackEnd.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateRentalAsync([FromBody] Rental rental)
+        public async Task<IActionResult> CreateRentalAsync([FromBody] RentalDto rental)
         {
 
             var result = await _validator.ValidateAsync(rental);
@@ -43,7 +43,7 @@ namespace Desafio_BackEnd.Controllers
         }
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(RentalReturn), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(RentalReturnDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetRentalByIdAsync(string id)

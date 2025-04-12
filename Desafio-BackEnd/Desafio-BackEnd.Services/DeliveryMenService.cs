@@ -5,7 +5,7 @@ namespace Desafio_BackEnd.Services
 {
     public class DeliveryMenService : IDeliveryMenService
     {
-        public async Task<bool> CreateDeliveryManAsync(DeliveryMan deliveryMan)
+        public async Task<bool> CreateDeliveryManAsync(DeliveryManRequest deliveryMan)
         {
             //TODO implementar a criação do entregador no banco de dados.
             //TODO implementar regras de negocio

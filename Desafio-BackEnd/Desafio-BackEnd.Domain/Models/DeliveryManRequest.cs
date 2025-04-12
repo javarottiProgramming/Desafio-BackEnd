@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace Desafio_BackEnd.Domain.Models
 {
-    public class DeliveryMan
+    public class DeliveryManRequest
     {
         [JsonPropertyName("identificador")]
         public required string Id { get; set; }

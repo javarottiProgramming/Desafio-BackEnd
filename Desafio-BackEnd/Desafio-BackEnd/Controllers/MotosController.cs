@@ -11,11 +11,11 @@ namespace Desafio_BackEnd.Controllers
     [Route("[controller]")]
     public class MotosController : Controller
     {
-        private readonly IValidator<Motorcycle> _validator;
+        private readonly IValidator<MotorcycleRequest> _validator;
         private readonly IValidator<MotorcycleUpdate> _validatorUp;
         private readonly IMotorcycleService _motorcycleService;
 
-        public MotosController(IValidator<Motorcycle> validator, IValidator<MotorcycleUpdate> validatorUp, IMotorcycleService motorcycleService)
+        public MotosController(IValidator<MotorcycleRequest> validator, IValidator<MotorcycleUpdate> validatorUp, IMotorcycleService motorcycleService)
         {
             _validator = validator;
             _validatorUp = validatorUp;
@@ -30,7 +30,7 @@ namespace Desafio_BackEnd.Controllers
         [HttpPost("")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateMotosAsync([FromBody] Motorcycle moto)
+        public async Task<IActionResult> CreateMotosAsync([FromBody] MotorcycleRequest moto)
         {
             var result = await _validator.ValidateAsync(moto);
 
@@ -51,7 +51,7 @@ namespace Desafio_BackEnd.Controllers
         }
 
         [HttpGet("{plate}")]
-        [ProducesResponseType(typeof(Motorcycle), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(MotorcycleRequest), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetMotoByPlateAsync(string plate)
         {
@@ -95,7 +95,7 @@ namespace Desafio_BackEnd.Controllers
 
 
         [HttpGet("{id}")]
-        [ProducesResponseType(typeof(Motorcycle), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(MotorcycleRequest), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
         public async Task<IActionResult> GetMotoByIdAsync(string id)

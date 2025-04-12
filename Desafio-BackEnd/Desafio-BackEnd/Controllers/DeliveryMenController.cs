@@ -8,10 +8,10 @@ namespace Desafio_BackEnd.Controllers
     [Route("entregadores")]
     public class DeliveryMenController : Controller
     {
-        private readonly IValidator<DeliveryMan> _validator;
+        private readonly IValidator<DeliveryManRequest> _validator;
         private readonly IDeliveryMenService _deliveryMenService;
 
-        public DeliveryMenController(IValidator<DeliveryMan> validator, IDeliveryMenService deliveryMenService)
+        public DeliveryMenController(IValidator<DeliveryManRequest> validator, IDeliveryMenService deliveryMenService)
         {
             _validator = validator;
             _deliveryMenService = deliveryMenService;
@@ -25,7 +25,7 @@ namespace Desafio_BackEnd.Controllers
         [HttpPost("")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateDeliveryMenAsync([FromBody] DeliveryMan deliveryMan)
+        public async Task<IActionResult> CreateDeliveryMenAsync([FromBody] DeliveryManRequest deliveryMan)
         {
             var result = await _validator.ValidateAsync(deliveryMan);
 

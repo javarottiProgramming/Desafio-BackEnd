@@ -1,19 +1,17 @@
-﻿using System.Runtime.Intrinsics.X86;
-using System.Text.Json.Serialization;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.Text.Json.Serialization;
 
 namespace Desafio_BackEnd.Domain.Models
 {
     /// <summary>
     /// Modelo de locação
     /// </summary>
-    public class Rental
+    public class RentalDto
     {
         [JsonPropertyName("entregador_id")]
         public string DeliveryManId { get; set; }
 
         [JsonPropertyName("moto_id")]
-        public string MotoId { get; set; }
+        public string MotorcycleId { get; set; }
 
         [JsonPropertyName("data_inicio")]
         public required DateTime StartDate { get; set; }
@@ -57,7 +55,7 @@ namespace Desafio_BackEnd.Domain.Models
     /// <summary>
     /// Modelo de devolução da locação
     /// </summary>
-    public class RentalReturn
+    public class RentalReturnDto
     {
 
         [JsonPropertyName("identificador")]
@@ -70,7 +68,7 @@ namespace Desafio_BackEnd.Domain.Models
         public string DeliveryManId { get; set; }
 
         [JsonPropertyName("moto_id")]
-        public string MotoId { get; set; }
+        public string MotorCycleId { get; set; }
 
         [JsonPropertyName("data_inicio")]
         public DateTime StartDate { get; set; }

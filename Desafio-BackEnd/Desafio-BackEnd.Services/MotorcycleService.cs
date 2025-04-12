@@ -5,7 +5,7 @@ namespace Desafio_BackEnd.Services
 {
     public class MotorcycleService : IMotorcycleService
     {
-        public Task<bool> CreateMotorcycleAsync(Motorcycle motorcycle)
+        public Task<bool> CreateMotorcycleAsync(MotorcycleRequest motorcycle)
         {
             Console.WriteLine($"Criando moto: {motorcycle.Id}");
 
@@ -25,16 +25,16 @@ namespace Desafio_BackEnd.Services
             return Task.FromResult(true);
         }
 
-        public Task<Motorcycle> GetMotorcycleByPlateAsync(string plate)
+        public Task<MotorcycleRequest> GetMotorcycleByPlateAsync(string plate)
         {
             //TODO: Implementar a busca da moto pela placa no banco de dados.
-            return Task.FromResult(new Motorcycle { Plate = plate });
+            return Task.FromResult(new MotorcycleRequest { Plate = plate });
         }
 
-        public Task<Motorcycle> GetMotorcycleByIdAsync(string id)
+        public Task<MotorcycleRequest> GetMotorcycleByIdAsync(string id)
         {
             //TODO: Implementar a busca da moto pelo ID no banco de dados.
-            return Task.FromResult(new Motorcycle { Id = id });
+            return Task.FromResult(new MotorcycleRequest { Id = id });
         }
 
         public Task<bool> UpdateMotorcycleAsync(string id, MotorcycleUpdate motorcycle)

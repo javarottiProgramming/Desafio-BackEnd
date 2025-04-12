@@ -2,7 +2,7 @@
 
 namespace Desafio_BackEnd.Domain.Models
 {
-    public class Motorcycle
+    public class MotorcycleRequest
     {
 
         /// <summary>

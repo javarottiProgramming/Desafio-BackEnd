@@ -1,4 +1,8 @@
+using Desafio_BackEnd.Data;
+using Desafio_BackEnd.Data.Repositories;
+using Desafio_BackEnd.Domain.Interfaces.Repositories;
 using Desafio_BackEnd.Domain.Interfaces.Services;
+using Desafio_BackEnd.Domain.Mappings;
 using Desafio_BackEnd.Domain.Models;
 using Desafio_BackEnd.Domain.Validators;
 using Desafio_BackEnd.Services;
@@ -13,10 +17,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Add FluentValidation
-builder.Services.AddScoped<IValidator<Motorcycle>, MotorcycleValidator>();
+builder.Services.AddScoped<IValidator<MotorcycleRequest>, MotorcycleValidator>();
 builder.Services.AddScoped<IValidator<MotorcycleUpdate>, MotorcycleUpdateValidator>();
-builder.Services.AddScoped<IValidator<DeliveryMan>, DeliveryManValidator>();
-builder.Services.AddScoped<IValidator<Rental>, RentalValidator>();
+builder.Services.AddScoped<IValidator<DeliveryManRequest>, DeliveryManValidator>();
+builder.Services.AddScoped<IValidator<RentalDto>, RentalValidator>();
 
 
 //Add Services 
@@ -24,6 +28,12 @@ builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
 builder.Services.AddScoped<IDeliveryMenService, DeliveryMenService>();
 builder.Services.AddScoped<IRentalService, RentalService>();
 
+builder.Services.AddSingleton(new DatabaseConnection(builder.Configuration.GetConnectionString("PostgreSqlConnection")));
+builder.Services.AddScoped<IRentalRepository, RentalRepository>();
+
+
+// Adicionar AutoMapper
+builder.Services.AddAutoMapper(typeof(RentalReturnDtoMapperProfile));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -54,6 +64,7 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
 
+    app.UseDeveloperExceptionPage();
     //app.UseStaticFiles();
 
     app.UseSwagger();
