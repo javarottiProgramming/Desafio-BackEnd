@@ -33,14 +33,13 @@ namespace Desafio_BackEnd.Services
             catch (Npgsql.PostgresException ex)
             {
                 _logger.LogError($"Constraint {ex.ConstraintName} violation");
-                throw;
             }
             catch (Exception ex)
             {
                 _logger.LogError($"Error while creating motorcycle: {ex.Message}");
-                throw;
             }
 
+            return false;
 
             //Quando a moto for cadastrada a aplicação deverá gerar um evento de moto cadastrada
             //Todo: Implementar o evento de moto cadastrada com trycatch.
@@ -62,7 +61,6 @@ namespace Desafio_BackEnd.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao buscar a moto: {ex.Message}");
                 return null;
             }
         }
@@ -81,7 +79,6 @@ namespace Desafio_BackEnd.Services
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Erro ao buscar a moto: {ex.Message}");
                 return null;
             }
         }
@@ -101,6 +98,7 @@ namespace Desafio_BackEnd.Services
             {
                 _logger.LogError($"Error while updating motorcycle plate: {ex.Message}");
             }
+
             return false;
         }
 

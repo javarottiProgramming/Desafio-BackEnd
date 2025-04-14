@@ -34,13 +34,13 @@ namespace Desafio_BackEnd.Services
             catch (Npgsql.PostgresException ex)
             {
                 _logger.LogError($"Constraint {ex.ConstraintName} violation");
-                throw;
             }
             catch (Exception ex)
             {
                 _logger.LogError($"Error while creating delivery man: {ex.Message}");
-                throw;
             }
+
+            return false;
         }
 
         public async Task<bool> UploadDocumentImageAsync(string id, string documentImgBase64)
