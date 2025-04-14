@@ -1,5 +1,5 @@
-﻿using Desafio_BackEnd.Domain.Interfaces.Services;
-using Desafio_BackEnd.Domain.Models;
+﻿using Desafio_BackEnd.Domain.Dtos;
+using Desafio_BackEnd.Domain.Interfaces.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,15 +7,16 @@ namespace Desafio_BackEnd.Controllers
 {
     [ApiController]
     [Route("entregadores")]
-    public class DeliveryMenController : ControllerBase
+    [Produces("application/json")]
+    public class DeliveryManController : ControllerBase
     {
-        private readonly IValidator<DeliveryManRequest> _validator;
-        private readonly IDeliveryMenService _deliveryMenService;
+        private readonly IValidator<DeliveryManDto> _validator;
+        private readonly IDeliveryManService _deliveryManService;
 
-        public DeliveryMenController(IValidator<DeliveryManRequest> validator, IDeliveryMenService deliveryMenService)
+        public DeliveryManController(IValidator<DeliveryManDto> validator, IDeliveryManService deliveryManService)
         {
             _validator = validator;
-            _deliveryMenService = deliveryMenService;
+            _deliveryManService = deliveryManService;
         }
 
         /// <summary>
@@ -23,10 +24,10 @@ namespace Desafio_BackEnd.Controllers
         /// </summary>
         /// <param name="deliveryMan"></param>
         /// <returns></returns>
-        [HttpPost("")]
+        [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateDeliveryMenAsync([FromBody] DeliveryManRequest deliveryMan)
+        public async Task<IActionResult> CreateDeliveryManAsync([FromBody] DeliveryManDto deliveryMan)
         {
             var result = await _validator.ValidateAsync(deliveryMan);
 
@@ -41,7 +42,7 @@ namespace Desafio_BackEnd.Controllers
                 return BadRequest("Dados inválidos.");
             }
 
-            await _deliveryMenService.CreateDeliveryManAsync(deliveryMan);
+            await _deliveryManService.CreateDeliveryManAsync(deliveryMan);
 
             return Created();
         }
@@ -55,7 +56,7 @@ namespace Desafio_BackEnd.Controllers
         [HttpPost("/{id}/cnh")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> SendDocumentImageAsync(string id, [FromBody] DeliveryManFileUpload file)
+        public async Task<IActionResult> UploadDocumentImageAsync(string id, [FromBody] DeliveryManDtoFileUpload file)
         {
             //TODO validar formato da imagem e valido extensao png ou bmp
             //TODO corrigir parametro string($binary)
@@ -66,10 +67,10 @@ namespace Desafio_BackEnd.Controllers
             }
 
 
-            // Chamar o serviço para enviar a imagem do documento
-            var result = await _deliveryMenService.SendDocumentImageAsync(id, file.DocumentImgBase64);
+            // Chamar o serviço para enviar a imagem do documento e salvar localmente
+            var result = await _deliveryManService.UploadDocumentImageAsync(id, file.DocumentImgBase64);
 
-            return Ok();
+            return Created();
         }
     }
 }

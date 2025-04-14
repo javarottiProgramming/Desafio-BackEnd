@@ -1,19 +1,49 @@
-﻿using Desafio_BackEnd.Domain.Interfaces.Services;
-using Desafio_BackEnd.Domain.Models;
+﻿using AutoMapper;
+using Desafio_BackEnd.Domain.Dtos;
+using Desafio_BackEnd.Domain.Entities;
+using Desafio_BackEnd.Domain.Interfaces.Repositories;
+using Desafio_BackEnd.Domain.Interfaces.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Desafio_BackEnd.Services
 {
-    public class DeliveryMenService : IDeliveryMenService
+    public class DeliveryManService : IDeliveryManService
     {
-        public async Task<bool> CreateDeliveryManAsync(DeliveryManRequest deliveryMan)
+        private readonly IDeliveryManRepository _deliveryManRepository;
+        private readonly IMapper _mapper;
+        private readonly ILogger<DeliveryManService> _logger;
+
+        public DeliveryManService(IDeliveryManRepository deliveryManRepository, IMapper mapper, ILogger<DeliveryManService> logger)
         {
-            //TODO implementar a criação do entregador no banco de dados.
+            _deliveryManRepository = deliveryManRepository;
+            _mapper = mapper;
+            _logger = logger;
+        }
+        public async Task<bool> CreateDeliveryManAsync(DeliveryManDto deliveryManDto)
+        {
             //TODO implementar regras de negocio
 
-            return await Task.FromResult(true);
+            try
+            {
+                var deliveryMan = _mapper.Map<DeliveryMan>(deliveryManDto);
+
+                var inserted = await _deliveryManRepository.CreateDeliveryManAsync(deliveryMan);
+
+                return await Task.FromResult(inserted);
+            }
+            catch (Npgsql.PostgresException ex)
+            {
+                _logger.LogError($"Constraint {ex.ConstraintName} violation");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error while creating delivery man: {ex.Message}");
+                throw;
+            }
         }
 
-        public async Task<bool> SendDocumentImageAsync(string id, string documentImgBase64)
+        public async Task<bool> UploadDocumentImageAsync(string id, string documentImgBase64)
         {
             try
             {

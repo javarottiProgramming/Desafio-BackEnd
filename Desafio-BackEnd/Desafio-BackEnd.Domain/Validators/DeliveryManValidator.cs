@@ -1,9 +1,9 @@
-﻿using Desafio_BackEnd.Domain.Models;
+﻿using Desafio_BackEnd.Domain.Dtos;
 using FluentValidation;
 
 namespace Desafio_BackEnd.Domain.Validators
 {
-    public class DeliveryManValidator : AbstractValidator<DeliveryManRequest>
+    public class DeliveryManValidator : AbstractValidator<DeliveryManDto>
     {
         public DeliveryManValidator()
         {

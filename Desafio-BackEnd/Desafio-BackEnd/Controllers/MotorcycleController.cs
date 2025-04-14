@@ -76,8 +76,7 @@ namespace Desafio_BackEnd.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateMotorcyclePlateByIdAsync(string id, [FromBody] MotorcyclePlateUpdateDto motorcyclePlateUpdateDto)
         {
-            /*
-            var result = await _validatorUp.ValidateAsync(moto);
+            var result = await _validatorUp.ValidateAsync(motorcyclePlateUpdateDto);
 
             if (!result.IsValid)
             {
@@ -89,7 +88,7 @@ namespace Desafio_BackEnd.Controllers
                 }
                 return BadRequest("Dados inválidos.");
             }
-            */
+            
 
             var motoUpdated = await _motorcycleService.UpdateMotorcyclePlateByIdAsync(id, motorcyclePlateUpdateDto.Plate);
 
@@ -99,7 +98,8 @@ namespace Desafio_BackEnd.Controllers
             }
 
             return Ok(new { mensagem = "Placa modificada com sucesso" });
-        }
+        }
+
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(MotorcycleDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]

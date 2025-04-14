@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Desafio_BackEnd.Controllers
 {
-
     /// <summary>
     /// Controller for managing rental operations.
     /// </summary>
@@ -54,7 +53,7 @@ namespace Desafio_BackEnd.Controllers
 
             await _rentalService.CreateRentalAsync(rental);
 
-            return Ok();
+            return Created();
         }
 
         /// <summary>

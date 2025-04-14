@@ -10,10 +10,12 @@ namespace Desafio_BackEnd.Services
     {
         private readonly IRentalRepository _rentalRepository;
         private readonly IMapper _mapper;
+        private readonly IDeliveryManRepository _deliveryMenRepository;
 
-        public RentalService(IRentalRepository rentalRepository, IMapper mapper)
+        public RentalService(IRentalRepository rentalRepository, IDeliveryManRepository deliveryMenRepository, IMapper mapper)
         {
             _rentalRepository = rentalRepository;
+            _deliveryMenRepository = deliveryMenRepository;
             _mapper = mapper;
         }
 
@@ -31,20 +33,20 @@ namespace Desafio_BackEnd.Services
             return await Task.FromResult(true);
 
         }
-        public async Task<RentalDto> GetRentalByIdAsync(string id)
+
+        public async Task<RentalDto?> GetRentalByIdAsync(string id)
         {
 
             var rental = await _rentalRepository.GetRentalByIdAsync(id);
 
             if (rental == null)
             {
-                throw new Exception("Locação não encontrada");
+                return null;
             }
 
             var rentalDto = _mapper.Map<RentalDto>(rental);
 
             return rentalDto;
-
         }
 
         public async Task<bool> CreateRentalReturnByIdAsync(string id, RentalReturnDto rentalReturnDate)
@@ -62,5 +64,4 @@ Quando a data informada for superior a data prevista do término, será cobrado 
             return await Task.FromResult(true);
         }
     }
-
 }

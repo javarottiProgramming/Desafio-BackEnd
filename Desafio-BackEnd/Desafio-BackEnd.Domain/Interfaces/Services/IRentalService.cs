@@ -7,7 +7,7 @@ namespace Desafio_BackEnd.Domain.Interfaces.Services
     {
         Task<bool> CreateRentalAsync(CreateRentalModel rental);
 
-        Task<RentalDto> GetRentalByIdAsync(string id);
+        Task<RentalDto?> GetRentalByIdAsync(string id);
 
         Task<bool> CreateRentalReturnByIdAsync(string id, RentalReturnDto rentalReturnDate);
     }

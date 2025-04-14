@@ -16,24 +16,25 @@ namespace Desafio_BackEnd.Data.Repositories
 
         }
 
-        public async Task<Rental> GetRentalByIdAsync(string id)
+        public async Task<Rental?> GetRentalByIdAsync(string id)
         {
             using (IDbConnection connection = _databaseConnection.CreateConnection())
             {
                 string query = $"SELECT * FROM {TABLE_NAME} WHERE id = @id";
-                var rental = await connection.QueryFirstOrDefaultAsync<Rental>(query, new { id = Convert.ToInt32(id) });
-                return rental;
+                return await connection.QueryFirstOrDefaultAsync<Rental>(query, new { id });
             }
         }
 
-        public async Task AddRentalAsync(Rental rental)
+        public async Task<bool> CreateRentalAsync(Rental rental)
         {
             using (IDbConnection connection = _databaseConnection.CreateConnection())
             {
                 const string query = @"
                     INSERT INTO Rentals (DeliveryManId, MotoId, StartDate, EndDate, ExpectedEndDate, Plan)
                     VALUES (@DeliveryManId, @MotoId, @StartDate, @EndDate, @ExpectedEndDate, @Plan)";
-                await connection.ExecuteAsync(query, rental);
+                var result = await connection.ExecuteAsync(query, rental);
+
+                return await Task.FromResult(result > 0);
             }
         }
     }

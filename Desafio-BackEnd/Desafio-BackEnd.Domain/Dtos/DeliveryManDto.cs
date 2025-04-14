@@ -1,9 +1,8 @@
-﻿using FluentValidation;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace Desafio_BackEnd.Domain.Models
+namespace Desafio_BackEnd.Domain.Dtos
 {
-    public class DeliveryManRequest
+    public class DeliveryManDto
     {
         [JsonPropertyName("identificador")]
         public required string Id { get; set; }
@@ -12,13 +11,13 @@ namespace Desafio_BackEnd.Domain.Models
         public required string Name { get; set; }
 
         [JsonPropertyName("cnpj")]
-        public required string DocumentNumber { get; set; }
+        public required string Document { get; set; }
 
         [JsonPropertyName("data_nascimento")]
         public required DateTime BirthDate { get; set; }
         
         [JsonPropertyName("numero_cnh")]
-        public required string DriversLicenseNumber { get; set; }
+        public required string DriversLicense { get; set; }
 
         [JsonPropertyName("tipo_cnh")]
         public required string DriversLicenseCategory { get; set; }
@@ -27,7 +26,7 @@ namespace Desafio_BackEnd.Domain.Models
         public string? DriversLicenseBase64 { get; set; }
     }
 
-    public class DeliveryManFileUpload
+    public class DeliveryManDtoFileUpload
     {
         [JsonPropertyName("imagem_cnh")]
         public required string DocumentImgBase64 { get; set; }

@@ -23,6 +23,8 @@ FluentMapper.Initialize(config =>
 {
     config.AddMap(new RentalMap());
     config.AddMap(new MotorcycleMap());
+    config.AddMap(new DeliveryManMap());
+
 });
 
 // Add services to the container.
@@ -32,12 +34,12 @@ builder.Services.AddControllers();
 // Add FluentValidation
 builder.Services.AddScoped<IValidator<MotorcycleDto>, MotorcycleValidator>();
 builder.Services.AddScoped<IValidator<MotorcyclePlateUpdateDto>, MotorcycleUpdateValidator>();
-builder.Services.AddScoped<IValidator<DeliveryManRequest>, DeliveryManValidator>();
+builder.Services.AddScoped<IValidator<DeliveryManDto>, DeliveryManValidator>();
 builder.Services.AddScoped<IValidator<CreateRentalModel>, RentalValidator>();
 
 //Add Services
 builder.Services.AddScoped<IMotorcycleService, MotorcycleService>();
-builder.Services.AddScoped<IDeliveryMenService, DeliveryMenService>();
+builder.Services.AddScoped<IDeliveryManService, DeliveryManService>();
 builder.Services.AddScoped<IRentalService, RentalService>();
 
 builder.Services.AddSingleton(new DatabaseConnection(builder.Configuration.GetConnectionString("PostgreSqlConnection")));
@@ -45,6 +47,7 @@ builder.Services.AddSingleton(new DatabaseConnection(builder.Configuration.GetCo
 // Adicionar Repositories
 builder.Services.AddScoped<IRentalRepository, RentalRepository>();
 builder.Services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
+builder.Services.AddScoped<IDeliveryManRepository, DeliveryManRepository>();
 
 // Adicionar AutoMapper
 builder.Services.AddAutoMapper(typeof(RentalDtoMapperProfile));
