@@ -47,7 +47,7 @@ namespace Desafio_BackEnd.Services
 
         }
 
-        public async Task<bool> SendRentalReturnByIdAsync(string id, RentalReturnDto rentalReturnDate)
+        public async Task<bool> CreateRentalReturnByIdAsync(string id, RentalReturnDto rentalReturnDate)
         {
             /*
              

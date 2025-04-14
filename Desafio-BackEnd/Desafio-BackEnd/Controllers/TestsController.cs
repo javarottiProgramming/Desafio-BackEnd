@@ -2,8 +2,9 @@
 
 namespace Desafio_BackEnd.Controllers
 {
+    [ApiController]
     [Route("testes")]
-    public class TestsController : Controller
+    public class TestsController : ControllerBase
     {
         [HttpPost]
         public async Task<IActionResult> Index([FromForm] FileUpload files)

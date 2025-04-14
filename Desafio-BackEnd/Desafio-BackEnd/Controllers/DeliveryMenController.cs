@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Desafio_BackEnd.Controllers
 {
+    [ApiController]
     [Route("entregadores")]
-    public class DeliveryMenController : Controller
+    public class DeliveryMenController : ControllerBase
     {
         private readonly IValidator<DeliveryManRequest> _validator;
         private readonly IDeliveryMenService _deliveryMenService;

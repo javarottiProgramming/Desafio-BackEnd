@@ -26,10 +26,6 @@ namespace Desafio_BackEnd.Data.Repositories
             }
         }
 
-
-
-
-
         public async Task AddRentalAsync(Rental rental)
         {
             using (IDbConnection connection = _databaseConnection.CreateConnection())

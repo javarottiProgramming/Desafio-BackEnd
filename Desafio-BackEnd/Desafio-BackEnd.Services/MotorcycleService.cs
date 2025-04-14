@@ -1,49 +1,125 @@
-﻿using Desafio_BackEnd.Domain.Interfaces.Services;
-using Desafio_BackEnd.Domain.Models;
+﻿using AutoMapper;
+using Desafio_BackEnd.Domain.Dtos;
+using Desafio_BackEnd.Domain.Entities;
+using Desafio_BackEnd.Domain.Interfaces.Repositories;
+using Desafio_BackEnd.Domain.Interfaces.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Desafio_BackEnd.Services
 {
     public class MotorcycleService : IMotorcycleService
     {
-        public Task<bool> CreateMotorcycleAsync(MotorcycleRequest motorcycle)
-        {
-            Console.WriteLine($"Criando moto: {motorcycle.Id}");
+        private readonly IMotorcycleRepository _motorcycleRepository;
+        private readonly IMapper _mapper;
+        private readonly ILogger<MotorcycleService> _logger;
 
-            //A placa é um dado único e não pode se repetir.
-            //TODO: Verificar se a placa já existe no banco de dados.
+        public MotorcycleService(IMotorcycleRepository motorcycleRepository, IMapper mapper, ILogger<MotorcycleService> logger)
+        {
+            _motorcycleRepository = motorcycleRepository;
+            _mapper = mapper;
+            _logger = logger;
+        }
+
+        public async Task<bool> CreateMotorcycleAsync(MotorcycleDto motorcycle)
+        {
+            try
+            {
+                var motorcycleEntity = _mapper.Map<Motorcycle>(motorcycle);
+
+                var inserted = await _motorcycleRepository.CreateMotorcycleAsync(motorcycleEntity);
+
+                return await Task.FromResult(inserted);
+            }
+            catch (Npgsql.PostgresException ex)
+            {
+                _logger.LogError($"Constraint {ex.ConstraintName} violation");
+                throw;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error while creating motorcycle: {ex.Message}");
+                throw;
+            }
+
 
             //Quando a moto for cadastrada a aplicação deverá gerar um evento de moto cadastrada
-            //Todo: Implementar o evento de moto cadastrada.
+            //Todo: Implementar o evento de moto cadastrada com trycatch.
 
 
-            return Task.FromResult(true);
         }
 
-        public Task<bool> DeleteMotorcycleAsync(string id)
+        public async Task<MotorcycleDto?> GetMotorcycleByPlateAsync(string plate)
         {
-            //TODO: Implementar a exclusão da moto no banco de dados.
-            return Task.FromResult(true);
+            try
+            {
+                var motorcycle = await _motorcycleRepository.GetMotorcycleByPlateAsync(plate);
+                if (motorcycle == null)
+                {
+                    return null;
+                }
+
+                return _mapper.Map<MotorcycleDto>(motorcycle);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao buscar a moto: {ex.Message}");
+                return null;
+            }
         }
 
-        public Task<MotorcycleRequest> GetMotorcycleByPlateAsync(string plate)
+        public async Task<MotorcycleDto?> GetMotorcycleByIdAsync(string id)
         {
-            //TODO: Implementar a busca da moto pela placa no banco de dados.
-            return Task.FromResult(new MotorcycleRequest { Plate = plate });
+            try
+            {
+                var motorcycle = await _motorcycleRepository.GetMotorcycleByIdAsync(id);
+                if (motorcycle == null)
+                {
+                    return null;
+                }
+
+                return _mapper.Map<MotorcycleDto>(motorcycle);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Erro ao buscar a moto: {ex.Message}");
+                return null;
+            }
         }
 
-        public Task<MotorcycleRequest> GetMotorcycleByIdAsync(string id)
+        public async Task<bool> UpdateMotorcyclePlateByIdAsync(string id, string plate)
         {
-            //TODO: Implementar a busca da moto pelo ID no banco de dados.
-            return Task.FromResult(new MotorcycleRequest { Id = id });
+            try
+            {
+                //TODO: Implementar a atualização da placa da moto no banco de dados.
+                return await _motorcycleRepository.UpdateMotorcyclePlateByIdAsync(id, plate);
+            }
+            catch (Npgsql.PostgresException ex)
+            {
+                _logger.LogError($"Constraint {ex.ConstraintName} violation");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error while updating motorcycle plate: {ex.Message}");
+            }
+            return false;
         }
 
-        public Task<bool> UpdateMotorcycleAsync(string id, MotorcycleUpdate motorcycle)
+        public async Task<bool> DeleteMotorcycleByIdAsync(string id)
         {
-            Console.WriteLine($"Atualizando placa da moto: {id}");
+            try
+            {
+                return await _motorcycleRepository.DeleteMotorcycleByIdAsync(id);
+            }
+            catch (Npgsql.PostgresException ex)
+            {
+                _logger.LogError($"Constraint {ex.ConstraintName} violation");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Error when delete motorcycle: {ex.Message}");
+            }
 
-            //TODO: Implementar a atualização da placa da moto no banco de dados.
-            return Task.FromResult(true);
-
+            return false;
         }
     }
 }

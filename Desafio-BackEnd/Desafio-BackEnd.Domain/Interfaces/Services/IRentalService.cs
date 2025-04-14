@@ -5,14 +5,10 @@ namespace Desafio_BackEnd.Domain.Interfaces.Services
 {
     public interface IRentalService
     {
-        //CreateRentalAsync
         Task<bool> CreateRentalAsync(CreateRentalModel rental);
 
-        //GetRentalByIdAsync
         Task<RentalDto> GetRentalByIdAsync(string id);
 
-        //SendRentalReturnByIdAsync
-        Task<bool> SendRentalReturnByIdAsync(string id, RentalReturnDto rentalReturnDate);
-
+        Task<bool> CreateRentalReturnByIdAsync(string id, RentalReturnDto rentalReturnDate);
     }
 }

@@ -7,7 +7,6 @@ namespace Desafio_BackEnd.Domain.Dtos
     /// </summary>
     public class RentalDto
     {
-
         [JsonPropertyName("identificador")]
         public string Id { get; set; }
 

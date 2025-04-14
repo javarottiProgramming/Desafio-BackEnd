@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Desafio_BackEnd.Controllers
 {
+
     /// <summary>
     /// Controller for managing rental operations.
     /// </summary>
+    [ApiController]
     [Route("locacao")]
     [Produces("application/json")]
-    public class RentalController : Controller
+    public class RentalController : ControllerBase
     {
         private readonly IRentalService _rentalService;
         private readonly IValidator<CreateRentalModel> _validator;
@@ -80,9 +82,9 @@ namespace Desafio_BackEnd.Controllers
         [HttpPut("{id}/devolucao")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> SendRentalReturnByIdAsync(string id, [FromBody] RentalReturnDto rentalReturnDate)
+        public async Task<IActionResult> CreateRentalReturnByIdAsync(string id, [FromBody] RentalReturnDto rentalReturnDate)
         {
-            await _rentalService.SendRentalReturnByIdAsync(id, rentalReturnDate);
+            await _rentalService.CreateRentalReturnByIdAsync(id, rentalReturnDate);
 
             return Ok();
         }
