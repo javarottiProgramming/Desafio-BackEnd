@@ -4,9 +4,9 @@ using Desafio_BackEnd.Domain.Entities;
 
 namespace Desafio_BackEnd.Domain.Mappings.Profiles
 {
-    public class DeliveryManDtoMapperProfile : Profile
+    public class DeliveryManMapperProfile : Profile
     {
-        public DeliveryManDtoMapperProfile()
+        public DeliveryManMapperProfile()
         {
             CreateMap<DeliveryMan, DeliveryManDto>().ReverseMap();
         }

@@ -23,13 +23,13 @@ namespace Desafio_BackEnd.Domain.Dtos
         public DateTime StartDate { get; set; }
 
         [JsonPropertyName("data_termino")]
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         [JsonPropertyName("data_previsao_termino")]
         public DateTime ExpectedEndDate { get; set; }
 
         [JsonPropertyName("data_devolucao")]
-        public DateTime ReturnDate { get; set; }
+        public DateTime? ReturnDate { get; set; }
 
     }
 

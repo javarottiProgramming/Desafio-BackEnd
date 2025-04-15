@@ -16,7 +16,7 @@ namespace Desafio_BackEnd.Data.Repositories
 
         }
 
-        public async Task<Rental?> GetRentalByIdAsync(string id)
+        public async Task<Rental?> GetRentalByIdAsync(int id)
         {
             using (IDbConnection connection = _databaseConnection.CreateConnection())
             {
@@ -29,12 +29,28 @@ namespace Desafio_BackEnd.Data.Repositories
         {
             using (IDbConnection connection = _databaseConnection.CreateConnection())
             {
-                const string query = @"
-                    INSERT INTO Rentals (DeliveryManId, MotoId, StartDate, EndDate, ExpectedEndDate, Plan)
-                    VALUES (@DeliveryManId, @MotoId, @StartDate, @EndDate, @ExpectedEndDate, @Plan)";
+                const string query = @$"
+                    INSERT INTO {TABLE_NAME} (delivery_man_id, motorcycle_id, start_date, 
+	                        end_date, expected_end_date, plan, daily_value)
+                    VALUES (@DeliveryManId, @MotorcycleId, @StartDate, 
+                            @EndDate, @ExpectedEndDate, @Plan, @DailyValue)";
+
                 var result = await connection.ExecuteAsync(query, rental);
 
                 return await Task.FromResult(result > 0);
+            }
+        }
+
+        public Task<bool> UpdateRentalReturnByIdAsync(Rental rental)
+        {
+            using (IDbConnection connection = _databaseConnection.CreateConnection())
+            {
+                string query = @$"UPDATE {TABLE_NAME} SET return_date = @ReturnDate, 
+                    daily_value = @DailyValue, updated_date = @UpdatedDate WHERE id = @Id";
+
+                var result = connection.Execute(query, rental);
+
+                return Task.FromResult(result > 0);
             }
         }
     }

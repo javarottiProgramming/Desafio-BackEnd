@@ -50,8 +50,9 @@ builder.Services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
 builder.Services.AddScoped<IDeliveryManRepository, DeliveryManRepository>();
 
 // Adicionar AutoMapper
-builder.Services.AddAutoMapper(typeof(RentalDtoMapperProfile));
-builder.Services.AddAutoMapper(typeof(MotorcycleDtoMapperProfile));
+builder.Services.AddAutoMapper(typeof(RentalMapperProfile));
+builder.Services.AddAutoMapper(typeof(MotorcycleMapperProfile));
+builder.Services.AddAutoMapper(typeof(DeliveryManMapperProfile));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

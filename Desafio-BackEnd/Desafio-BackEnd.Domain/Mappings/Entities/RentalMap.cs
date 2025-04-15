@@ -13,6 +13,7 @@ namespace Desafio_BackEnd.Domain.Mappings.Entities
             Map(r => r.StartDate).ToColumn("start_date");
             Map(r => r.EndDate).ToColumn("end_date");
             Map(r => r.ExpectedEndDate).ToColumn("expected_end_date");
+            Map(r => r.ReturnDate).ToColumn("return_date");
             Map(r => r.Plan).ToColumn("plan");
             Map(r => r.DailyValue).ToColumn("daily_value");
             Map(r => r.CreatedDate).ToColumn("created_date");

@@ -85,11 +85,11 @@ namespace Desafio_BackEnd.Controllers
         [HttpPut("{id}/devolucao")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(object), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> CreateRentalReturnByIdAsync(string id, [FromBody] RentalReturnDto rentalReturnDate)
+        public async Task<IActionResult> UpdateRentalReturnByIdAsync(string id, [FromBody] RentalReturnDto rentalReturnDate)
         {
-            var created = await _rentalService.CreateRentalReturnByIdAsync(id, rentalReturnDate);
+            var updated = await _rentalService.UpdateRentalReturnByIdAsync(id, rentalReturnDate.ReturnDate);
 
-            if (!created)
+            if (!updated)
             {
                 return BadRequest(new { mensagem = "Dados inválidos." });
             }

@@ -4,7 +4,8 @@ namespace Desafio_BackEnd.Domain.Interfaces.Repositories
 {
     public interface IRentalRepository
     {
-        Task<Rental?> GetRentalByIdAsync(string id);
+        Task<Rental?> GetRentalByIdAsync(int id);
         Task<bool> CreateRentalAsync(Rental rental);
+        Task<bool> UpdateRentalReturnByIdAsync(Rental rental);
     }
 }

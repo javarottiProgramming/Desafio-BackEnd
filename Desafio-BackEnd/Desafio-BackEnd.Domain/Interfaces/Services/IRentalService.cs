@@ -9,6 +9,6 @@ namespace Desafio_BackEnd.Domain.Interfaces.Services
 
         Task<RentalDto?> GetRentalByIdAsync(string id);
 
-        Task<bool> CreateRentalReturnByIdAsync(string id, RentalReturnDto rentalReturnDate);
+        Task<bool> UpdateRentalReturnByIdAsync(string id, DateTime returnDate);
     }
 }
