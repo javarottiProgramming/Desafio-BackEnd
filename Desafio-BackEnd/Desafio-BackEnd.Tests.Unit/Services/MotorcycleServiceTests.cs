@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
-namespace Desafio_BackEnd.Tests.Services
+namespace Desafio_BackEnd.Tests.Unit.Services
 {
     public class MotorcycleServiceTests
     {

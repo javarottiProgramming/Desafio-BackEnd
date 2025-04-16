@@ -7,7 +7,7 @@ using Desafio_BackEnd.Domain.Interfaces.Services;
 using FluentValidation;
 using FluentValidation.Results;
 
-namespace Desafio_BackEnd.Tests.Controllers;
+namespace Desafio_BackEnd.Tests.Unit.Controllers;
 
 public class MotorcycleControllerTests
 {

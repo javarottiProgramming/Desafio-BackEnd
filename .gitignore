@@ -21,3 +21,12 @@
 /Desafio-BackEnd/Desafio-BackEnd.Data/obj
 /Desafio-BackEnd/Desafio-BackEnd.Tests/bin/Debug/net8.0
 /Desafio-BackEnd/Desafio-BackEnd.Tests/obj
+/Desafio-BackEnd/Desafio-BackEnd.Integration.Tests/obj
+/Desafio-BackEnd/Desafio-BackEnd.Tests.Integration/bin/Debug/net8.0
+/Desafio-BackEnd/Desafio-BackEnd.Tests.Integration/DeliveryManRepositoryTests.cs
+/Desafio-BackEnd/Desafio-BackEnd.Tests.Integration/obj
+/Desafio-BackEnd/Desafio-BackEnd.Tests.Unit/bin/Debug/net8.0
+/Desafio-BackEnd/Desafio-BackEnd.Tests.Unit/Controllers/DeliveryManControllerTests.cs
+/Desafio-BackEnd/Desafio-BackEnd.Tests.Unit/obj
+/Desafio-BackEnd/Desafio-BackEnd.Utils/bin/Debug/net8.0
+/Desafio-BackEnd/Desafio-BackEnd.Utils/obj

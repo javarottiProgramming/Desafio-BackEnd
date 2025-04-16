@@ -8,7 +8,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using Desafio_BackEnd.Domain.Models;
 
-namespace Desafio_BackEnd.Tests.Controllers;
+namespace Desafio_BackEnd.Tests.Unit.Controllers;
 
 public class RentalControllerTests
 {
