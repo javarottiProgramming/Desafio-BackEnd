@@ -1,13 +1,13 @@
 using AutoMapper;
-using Desafio_BackEnd.Domain.Dtos;
-using Desafio_BackEnd.Domain.Entities;
-using Desafio_BackEnd.Domain.Interfaces.Repositories;
-using Desafio_BackEnd.Services;
+using Challenge.BackEnd.Core.Domain.Dtos;
+using Challenge.BackEnd.Core.Domain.Entities;
+using Challenge.BackEnd.Core.Domain.Interfaces.Repositories;
+using Challenge.BackEnd.Core.Services;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
 
-namespace Desafio_BackEnd.Tests.Unit.Services
+namespace Challenge.BackEnd.Test.Unit.Unit.Services
 {
     public class DeliveryManServiceTests
     {

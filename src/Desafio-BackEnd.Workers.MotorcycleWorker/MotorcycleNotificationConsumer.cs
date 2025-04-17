@@ -1,7 +1,7 @@
-﻿using Desafio_BackEnd.Domain.Events;
+﻿using Challenge.BackEnd.Core.Domain.Events;
 using MassTransit;
 
-namespace Desafio_BackEnd.Workers.MotorcycleWorker
+namespace Challenge.BackEnd.Worker.MotorcycleWorker
 {
     public class MotorcycleNotificationConsumer : IConsumer<MotorcycleNotification>
     {

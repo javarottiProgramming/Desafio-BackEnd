@@ -1,7 +1,7 @@
-﻿using Desafio_BackEnd.Domain.Dtos;
+﻿using Challenge.BackEnd.Core.Domain.Dtos;
 using FluentValidation;
 
-namespace Desafio_BackEnd.Domain.Validators
+namespace Challenge.BackEnd.Core.Domain.Validators
 {
     public class DeliveryManValidator : AbstractValidator<DeliveryManDto>
     {

@@ -2,7 +2,7 @@
 using MassTransit;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Desafio_BackEnd.Workers.MotorcycleWorker;
+using Challenge.BackEnd.Worker.MotorcycleWorker;
 
 
 Console.WriteLine("Hello, World!");

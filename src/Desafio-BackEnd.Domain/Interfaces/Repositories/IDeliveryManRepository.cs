@@ -1,6 +1,6 @@
-﻿using Desafio_BackEnd.Domain.Entities;
+﻿using Challenge.BackEnd.Core.Domain.Entities;
 
-namespace Desafio_BackEnd.Domain.Interfaces.Repositories
+namespace Challenge.BackEnd.Core.Domain.Interfaces.Repositories
 {
     public interface IDeliveryManRepository
     {

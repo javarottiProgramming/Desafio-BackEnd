@@ -1,11 +1,11 @@
-﻿using Desafio_BackEnd.Domain.Dtos;
-using Desafio_BackEnd.Domain.Interfaces.Services;
-using Desafio_BackEnd.Domain.Models;
+﻿using Challenge.BackEnd.Core.Domain.Dtos;
+using Challenge.BackEnd.Core.Domain.Interfaces.Services;
+using Challenge.BackEnd.Core.Domain.Models;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 
-namespace Desafio_BackEnd.Controllers
+namespace Challenge.BackEnd.Presentation.API.Controllers
 {
     [ApiController]
     [Route("locacao")]

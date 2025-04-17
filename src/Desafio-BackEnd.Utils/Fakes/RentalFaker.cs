@@ -1,8 +1,8 @@
 ﻿using Bogus;
-using Desafio_BackEnd.Domain.Entities;
+using Challenge.BackEnd.Core.Domain.Entities;
 using System.Numerics;
 
-namespace Desafio_BackEnd.Utils.Fakes
+namespace Challenge.BackEnd.Core.Utils.Fakes
 {
     public class RentalFaker : Faker<Rental>
     {

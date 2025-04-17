@@ -1,8 +1,8 @@
-﻿using Desafio_BackEnd.Domain.Dtos;
-using Desafio_BackEnd.Domain.Models;
+﻿using Challenge.BackEnd.Core.Domain.Dtos;
+using Challenge.BackEnd.Core.Domain.Models;
 using FluentValidation;
 
-namespace Desafio_BackEnd.Domain.Validators
+namespace Challenge.BackEnd.Core.Domain.Validators
 {
     public class RentalValidator : AbstractValidator<CreateRentalModel>
     {

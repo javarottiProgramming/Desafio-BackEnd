@@ -1,9 +1,9 @@
 using Dapper;
-using Desafio_BackEnd.Domain.Entities;
-using Desafio_BackEnd.Domain.Interfaces.Repositories;
+using Challenge.BackEnd.Core.Domain.Entities;
+using Challenge.BackEnd.Core.Domain.Interfaces.Repositories;
 using System.Data;
 
-namespace Desafio_BackEnd.Data.Repositories
+namespace Challenge.BackEnd.Infrastructure.Data.Repositories
 {
     public class RentalRepository : IRentalRepository
     {

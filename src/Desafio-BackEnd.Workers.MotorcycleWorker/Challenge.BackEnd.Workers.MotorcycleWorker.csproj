@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>Desafio_BackEnd.Workers.MotorcycleWorker</RootNamespace>
+    <RootNamespace>Challenge.BackEnd.Workers.MotorcycleWorker</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
+    <ProjectReference Include="..\Desafio-BackEnd.Domain\Challenge.BackEnd.Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>

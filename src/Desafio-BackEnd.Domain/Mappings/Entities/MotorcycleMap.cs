@@ -1,7 +1,7 @@
 ﻿using Dapper.FluentMap.Mapping;
-using Desafio_BackEnd.Domain.Entities;
+using Challenge.BackEnd.Core.Domain.Entities;
 
-namespace Desafio_BackEnd.Domain.Mappings.Entities
+namespace Challenge.BackEnd.Core.Domain.Mappings.Entities
 {
     public class MotorcycleMap : EntityMap<Motorcycle>
     {

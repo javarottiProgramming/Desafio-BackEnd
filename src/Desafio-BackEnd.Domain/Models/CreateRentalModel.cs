@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Desafio_BackEnd.Domain.Models
+namespace Challenge.BackEnd.Core.Domain.Models
 { 
     /// <summary>
   /// Modelo de locação

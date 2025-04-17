@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Desafio_BackEnd</RootNamespace>
+    <RootNamespace>Challenge.BackEnd.Presentation.API</RootNamespace>
     <UserSecretsId>f108f84c-f277-4470-89da-34fdd27652c3</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Desafio-BackEnd.Data\Desafio-BackEnd.Data.csproj" />
-    <ProjectReference Include="..\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
-    <ProjectReference Include="..\Desafio-BackEnd.Services\Desafio-BackEnd.Services.csproj" />
+    <ProjectReference Include="..\Desafio-BackEnd.Data\Challenge.BackEnd.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Desafio-BackEnd.Domain\Challenge.BackEnd.Core.Domain.csproj" />
+    <ProjectReference Include="..\Desafio-BackEnd.Services\Challenge.BackEnd.Core.Services.csproj" />
   </ItemGroup>
 
 </Project>

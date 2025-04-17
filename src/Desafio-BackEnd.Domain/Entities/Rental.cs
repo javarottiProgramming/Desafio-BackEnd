@@ -1,4 +1,4 @@
-﻿namespace Desafio_BackEnd.Domain.Entities
+﻿namespace Challenge.BackEnd.Core.Domain.Entities
 {
     public class Rental
     {

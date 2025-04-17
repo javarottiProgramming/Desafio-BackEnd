@@ -1,7 +1,7 @@
-﻿using Desafio_BackEnd.Domain.Dtos;
-using Desafio_BackEnd.Domain.Models;
+﻿using Challenge.BackEnd.Core.Domain.Dtos;
+using Challenge.BackEnd.Core.Domain.Models;
 
-namespace Desafio_BackEnd.Domain.Interfaces.Services
+namespace Challenge.BackEnd.Core.Domain.Interfaces.Services
 {
     public interface IRentalService
     {

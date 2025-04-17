@@ -1,10 +1,10 @@
-using Desafio_BackEnd.Data;
-using Desafio_BackEnd.Data.Repositories;
-using Desafio_BackEnd.Domain.Entities;
-using Desafio_BackEnd.Utils;
-using Desafio_BackEnd.Utils.Fakes;
+using Challenge.BackEnd.Infrastructure.Data;
+using Challenge.BackEnd.Infrastructure.Data.Repositories;
+using Challenge.BackEnd.Core.Domain.Entities;
+using Challenge.BackEnd.Core.Utils;
+using Challenge.BackEnd.Core.Utils.Fakes;
 
-namespace Desafio_BackEnd.Tests.Integration.Repositories
+namespace Challenge.BackEnd.Test.Unit.Integration.Repositories
 {
     public class MotorcycleRepositoryTests
     {

@@ -3,25 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35828.75
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio-BackEnd", "src\Desafio-BackEnd\Desafio-BackEnd.csproj", "{39E5B14E-6218-4E07-8C91-69DD089A48B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.BackEnd.Presentation.API", "src\Desafio-BackEnd\Challenge.BackEnd.Presentation.API.csproj", "{39E5B14E-6218-4E07-8C91-69DD089A48B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio-BackEnd.Domain", "src\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj", "{19CCB870-99EE-4616-9F81-0092C1B66918}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.BackEnd.Core.Domain", "src\Desafio-BackEnd.Domain\Challenge.BackEnd.Core.Domain.csproj", "{19CCB870-99EE-4616-9F81-0092C1B66918}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio-BackEnd.Services", "src\Desafio-BackEnd.Services\Desafio-BackEnd.Services.csproj", "{4D36A943-A57C-441A-BA98-0532C081F158}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.BackEnd.Core.Services", "src\Desafio-BackEnd.Services\Challenge.BackEnd.Core.Services.csproj", "{4D36A943-A57C-441A-BA98-0532C081F158}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio-BackEnd.Data", "src\Desafio-BackEnd.Data\Desafio-BackEnd.Data.csproj", "{17B3BAA7-43B0-421F-8AC4-3A838E0FDD23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.BackEnd.Infrastructure.Data", "src\Desafio-BackEnd.Data\Challenge.BackEnd.Infrastructure.Data.csproj", "{17B3BAA7-43B0-421F-8AC4-3A838E0FDD23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio-BackEnd.Tests.Unit", "test\Desafio-BackEnd.Tests.Unit\Desafio-BackEnd.Tests.Unit.csproj", "{1E30F5B9-82B3-4DC4-AD28-9C2AD9E2F853}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.BackEnd.Test.Unit", "test\Desafio-BackEnd.Tests.Unit\Challenge.BackEnd.Test.Unit.csproj", "{1E30F5B9-82B3-4DC4-AD28-9C2AD9E2F853}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio-BackEnd.Tests.Integration", "test\Desafio-BackEnd.Tests.Integration\Desafio-BackEnd.Tests.Integration.csproj", "{11A2AF1A-345F-406D-95BC-98D2964FD3FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.BackEnd.Test.Integration", "test\Desafio-BackEnd.Tests.Integration\Challenge.BackEnd.Test.Integration.csproj", "{11A2AF1A-345F-406D-95BC-98D2964FD3FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio-BackEnd.Utils", "src\Desafio-BackEnd.Utils\Desafio-BackEnd.Utils.csproj", "{C31A1A1B-B358-4F96-80C5-1E6A11D5D512}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.BackEnd.Core.Utils", "src\Desafio-BackEnd.Utils\Challenge.BackEnd.Core.Utils.csproj", "{C31A1A1B-B358-4F96-80C5-1E6A11D5D512}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Worker", "4 - Worker", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Presentation", "1 - Presentation", "{598BC7C0-82A5-485D-AD74-77275C6E77C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Desafio-BackEnd.Workers.MotorcycleWorker", "src\Desafio-BackEnd.Workers.MotorcycleWorker\Desafio-BackEnd.Workers.MotorcycleWorker.csproj", "{D065EA0E-73BB-48FB-BE0E-0A9334E18B78}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge.BackEnd.Workers.MotorcycleWorker", "src\Desafio-BackEnd.Workers.MotorcycleWorker\Challenge.BackEnd.Workers.MotorcycleWorker.csproj", "{D065EA0E-73BB-48FB-BE0E-0A9334E18B78}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Test", "5 - Test", "{3D060CB1-573A-4FDA-BAE8-09EE166B0562}"
 EndProject

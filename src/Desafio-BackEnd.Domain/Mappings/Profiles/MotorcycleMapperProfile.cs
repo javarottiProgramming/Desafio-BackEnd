@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using Desafio_BackEnd.Domain.Dtos;
-using Desafio_BackEnd.Domain.Entities;
-using Desafio_BackEnd.Domain.Events;
+using Challenge.BackEnd.Core.Domain.Dtos;
+using Challenge.BackEnd.Core.Domain.Entities;
+using Challenge.BackEnd.Core.Domain.Events;
 
-namespace Desafio_BackEnd.Domain.Mappings.Profiles
+namespace Challenge.BackEnd.Core.Domain.Mappings.Profiles
 {
     public class MotorcycleMapperProfile : Profile
     {

@@ -1,7 +1,7 @@
 ﻿using Bogus;
-using Desafio_BackEnd.Domain.Entities;
+using Challenge.BackEnd.Core.Domain.Entities;
 
-namespace Desafio_BackEnd.Utils.Fakes
+namespace Challenge.BackEnd.Core.Utils.Fakes
 {
     public class MotorcycleFaker : Faker<Motorcycle>
     {

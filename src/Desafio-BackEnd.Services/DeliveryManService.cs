@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using Desafio_BackEnd.Domain.Dtos;
-using Desafio_BackEnd.Domain.Entities;
-using Desafio_BackEnd.Domain.Events;
-using Desafio_BackEnd.Domain.Interfaces.Repositories;
-using Desafio_BackEnd.Domain.Interfaces.Services;
+using Challenge.BackEnd.Core.Domain.Dtos;
+using Challenge.BackEnd.Core.Domain.Entities;
+using Challenge.BackEnd.Core.Domain.Events;
+using Challenge.BackEnd.Core.Domain.Interfaces.Repositories;
+using Challenge.BackEnd.Core.Domain.Interfaces.Services;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 
-namespace Desafio_BackEnd.Services
+namespace Challenge.BackEnd.Core.Services
 {
     public class DeliveryManService : IDeliveryManService
     {

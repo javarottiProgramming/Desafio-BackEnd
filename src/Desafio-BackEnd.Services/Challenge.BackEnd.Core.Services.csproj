@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>Desafio_BackEnd.Services</RootNamespace>
+    <RootNamespace>Challenge.BackEnd.Core.Services</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Desafio-BackEnd.Data\Desafio-BackEnd.Data.csproj" />
-    <ProjectReference Include="..\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
+    <ProjectReference Include="..\Desafio-BackEnd.Data\Challenge.BackEnd.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Desafio-BackEnd.Domain\Challenge.BackEnd.Core.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

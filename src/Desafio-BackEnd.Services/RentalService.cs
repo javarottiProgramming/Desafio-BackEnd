@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using Desafio_BackEnd.Data.Repositories;
-using Desafio_BackEnd.Domain.Dtos;
-using Desafio_BackEnd.Domain.Entities;
-using Desafio_BackEnd.Domain.Interfaces.Repositories;
-using Desafio_BackEnd.Domain.Interfaces.Services;
-using Desafio_BackEnd.Domain.Models;
+using Challenge.BackEnd.Infrastructure.Data.Repositories;
+using Challenge.BackEnd.Core.Domain.Dtos;
+using Challenge.BackEnd.Core.Domain.Entities;
+using Challenge.BackEnd.Core.Domain.Interfaces.Repositories;
+using Challenge.BackEnd.Core.Domain.Interfaces.Services;
+using Challenge.BackEnd.Core.Domain.Models;
 using Microsoft.Extensions.Logging;
 
-namespace Desafio_BackEnd.Services
+namespace Challenge.BackEnd.Core.Services
 {
     public class RentalService : IRentalService
     {

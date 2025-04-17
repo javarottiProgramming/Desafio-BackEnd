@@ -1,4 +1,4 @@
-﻿namespace Desafio_BackEnd.Domain.Events
+﻿namespace Challenge.BackEnd.Core.Domain.Events
 {
     public class MotorcycleCreatedEvent
     {

@@ -1,7 +1,7 @@
 using System.Data;
 using Npgsql;
 
-namespace Desafio_BackEnd.Data
+namespace Challenge.BackEnd.Infrastructure.Data
 {
     public class DatabaseConnection
     {

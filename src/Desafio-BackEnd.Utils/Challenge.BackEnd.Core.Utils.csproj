@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>Desafio_BackEnd.Utils</RootNamespace>
+    <RootNamespace>Challenge.BackEnd.Core.Utils</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
+    <ProjectReference Include="..\Desafio-BackEnd.Domain\Challenge.BackEnd.Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>

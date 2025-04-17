@@ -1,8 +1,8 @@
-﻿using Desafio_BackEnd.Domain.Events;
+﻿using Challenge.BackEnd.Core.Domain.Events;
 using MassTransit;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Desafio_BackEnd.Controllers
+namespace Challenge.BackEnd.Presentation.API.Controllers
 {
     [ApiController]
     [Route("testes")]

@@ -1,15 +1,13 @@
-using Xunit;
-using Moq;
-using Microsoft.AspNetCore.Mvc;
-using Desafio_BackEnd.Controllers;
-using Desafio_BackEnd.Domain.Dtos;
-using Desafio_BackEnd.Domain.Interfaces.Services;
+using Challenge.BackEnd.Core.Domain.Dtos;
+using Challenge.BackEnd.Core.Domain.Interfaces.Services;
+using Challenge.BackEnd.Presentation.API.Controllers;
 using FluentValidation;
 using FluentValidation.Results;
-using Desafio_BackEnd.Services;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Moq;
 
-namespace Desafio_BackEnd.Tests.Unit.Controllers;
+namespace Challenge.BackEnd.Test.Unit.Unit.Controllers;
 
 public class MotorcycleControllerTests
 {

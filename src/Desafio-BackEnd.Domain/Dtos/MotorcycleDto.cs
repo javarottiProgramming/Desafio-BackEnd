@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Desafio_BackEnd.Domain.Dtos
+namespace Challenge.BackEnd.Core.Domain.Dtos
 {
     public class MotorcycleDto
     {
