@@ -1,0 +1,25 @@
+[
+  {
+    "Name": "develop",
+    "Projects": [
+      {
+        "Path": "src\\Challenge.BackEnd.Presentation.API\\Challenge.BackEnd.Presentation.API.csproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "challenge",
+    "Projects": [
+      {
+        "Path": "src\\Challenge.BackEnd.Presentation.API\\Challenge.BackEnd.Presentation.API.csproj",
+        "Action": "Start",
+        "DebugTarget": "https"
+      },
+      {
+        "Path": "src\\Challenge.BackEnd.Workers.MotorcycleWorker\\Challenge.BackEnd.Workers.MotorcycleWorker.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
