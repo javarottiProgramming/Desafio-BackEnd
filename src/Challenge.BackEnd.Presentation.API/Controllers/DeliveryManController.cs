@@ -6,8 +6,8 @@ using System.Net.Mime;
 
 namespace Challenge.BackEnd.Presentation.API.Controllers
 {
-    [Route("entregadores")]
     [ApiController]
+    [Route("entregadores")]
     [Produces("application/json")]
     [Consumes(MediaTypeNames.Application.Json)]
     public class DeliveryManController : ControllerBase
@@ -77,6 +77,9 @@ namespace Challenge.BackEnd.Presentation.API.Controllers
 
             // Chamar o serviço para enviar a imagem do documento e salvar localmente
             var result = await _deliveryManService.UploadDocumentImageAsync(id, file.DocumentImgBase64);
+
+            if(!result)
+                return BadRequest(new { mensagem = "Dados inválidos." });
 
             return Created();
         }

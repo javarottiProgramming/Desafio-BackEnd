@@ -11,12 +11,21 @@ namespace Challenge.BackEnd.Core.Domain.Validators
 
             RuleFor(x => x.DeliveryManId).NotNull().NotEmpty().MaximumLength(50);
             RuleFor(x => x.MotorcycleId).NotNull().NotEmpty().MaximumLength(50);
-            RuleFor(x => x.StartDate).NotNull().Must(BeAValidDate).Must(BeAValidStartDate);
-            RuleFor(x => x.EndDate).NotNull().Must(BeAValidDate);
-            RuleFor(x => x.ExpectedEndDate).NotNull().Must(BeAValidDate).Must(BeAValidExpectedEndDate);
-            RuleFor(x => x.Plan).NotNull().
-                Must(x => x == 7 || x == 15 || x == 30 || x == 45 || x == 50)
-                .WithMessage("O plano deve ser 7, 15, 30, 45 ou 50 dias.");
+            RuleFor(x => x.StartDate).NotNull()
+                .Must(BeAValidDate)
+                .Must(BeAValidStartDate)
+                .WithMessage("'data_inicio' invalid.");;
+            RuleFor(x => x.EndDate).NotNull()
+                .Must(BeAValidDate)
+                .Must(BeAValidExpectedEndDate)
+                .WithMessage("'data_termino' invalid.");
+            RuleFor(x => x.ExpectedEndDate).NotNull()
+                .Must(BeAValidDate)
+                .Must(BeAValidExpectedEndDate)
+                .WithMessage("'data_previsao_termino' invalid.");
+            RuleFor(x => x.Plan).NotNull()
+                .Must(x => x == 7 || x == 15 || x == 30 || x == 45 || x == 50)
+                .WithMessage("'plano' value must be 7, 15, 30, 45 or 50.");
         }
 
         private bool BeAValidDate(DateTime date)
@@ -31,11 +40,9 @@ namespace Challenge.BackEnd.Core.Domain.Validators
             return startDate > now && startDate.Day == now.AddDays(1).Day;
         }
 
-        //TODO: Melhorar a validação?
-        //pois esta se baseando no campo PLAN adotando que o campo é a qtd de dias
         private bool BeAValidExpectedEndDate(CreateRentalModel obj, DateTime expectedEndDate)
         {
-            return expectedEndDate > obj.StartDate && 
+            return expectedEndDate > obj.StartDate &&
                 expectedEndDate.Day == obj.StartDate.AddDays(obj.Plan).Day;
         }
     }

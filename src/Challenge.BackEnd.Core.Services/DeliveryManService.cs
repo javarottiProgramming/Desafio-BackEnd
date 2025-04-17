@@ -58,7 +58,8 @@ namespace Challenge.BackEnd.Core.Services
 
                 if (fileExtension == null)
                 {
-                    throw new InvalidOperationException("Formato de imagem inválido. Apenas PNG e BMP são suportados.");
+                    _logger.LogError("Invalid image format. Only PNG and BMP are supported.");
+                    return false;
                 }
 
 

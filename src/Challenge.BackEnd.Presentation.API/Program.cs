@@ -67,6 +67,7 @@ builder.Services.AddSwaggerGen(c =>
 
     c.MapType<object>(() => new OpenApiSchema { Type = "object", Nullable = true });
 
+
 });
 
 builder.Services.AddMassTransit(bus =>

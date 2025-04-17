@@ -52,12 +52,15 @@ namespace Challenge.BackEnd.Presentation.API.Controllers
                 return BadRequest(new { mensagem = "Dados inválidos." });
             }
 
-            await _rentalService.CreateRentalAsync(rental);
+            var created = await _rentalService.CreateRentalAsync(rental);
+
+            if (!created)
+            {
+                return BadRequest(new { mensagem = "Dados inválidos." });
+            }
 
             return Created();
 
-            //return CreatedAtAction(nameof(GetRentalByIdAsync), nameof(RentalController),
-            //    new { id = rental.MotorcycleId });
         }
 
         /// <summary>

@@ -62,7 +62,7 @@ namespace Challenge.BackEnd.Core.Services
                 return false;
             }
 
-            if (!deliveryMan.DriversLicenseCategory.ToUpper().Contains("A"))
+            if (!deliveryMan.DriversLicenseCategory.ToUpper().Equals("A"))
             {
                 string msg = $"Driver's category is not A. DeliveryManId: {deliveryManId}";
                 _logger.LogWarning(msg);
