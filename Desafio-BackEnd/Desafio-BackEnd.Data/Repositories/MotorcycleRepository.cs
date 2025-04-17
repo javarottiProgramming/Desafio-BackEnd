@@ -58,10 +58,12 @@ namespace Desafio_BackEnd.Data.Repositories
 
         public async Task<bool> UpdateMotorcyclePlateByIdAsync(string id, string plate)
         {
-            var query = $"UPDATE {TABLE_NAME} SET plate = @plate WHERE id = @id";
+            var now = DateTime.UtcNow;
+            var query = $"UPDATE {TABLE_NAME} SET plate = @plate, updated_date = @now WHERE id = @id";
+
             using (IDbConnection connection = _databaseConnection.CreateConnection())
             {
-                var result = await connection.ExecuteAsync(query, new { id, plate });
+                var result = await connection.ExecuteAsync(query, new { id, plate, now });
                 return await Task.FromResult(result == 1);
             }
         }

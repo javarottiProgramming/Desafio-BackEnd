@@ -2,7 +2,7 @@
 using Bogus.Extensions.Brazil;
 using Desafio_BackEnd.Domain.Entities;
 
-namespace Desafio_BackEnd.Utils
+namespace Desafio_BackEnd.Utils.Fakes
 {
     public class DeliveryManFaker : Faker<DeliveryMan>
     {
