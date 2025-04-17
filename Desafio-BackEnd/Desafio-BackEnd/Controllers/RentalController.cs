@@ -53,6 +53,9 @@ namespace Desafio_BackEnd.Controllers
             await _rentalService.CreateRentalAsync(rental);
 
             return Created();
+
+            //return CreatedAtAction(nameof(GetRentalByIdAsync), nameof(RentalController),
+            //    new { id = rental.MotorcycleId });
         }
 
         /// <summary>

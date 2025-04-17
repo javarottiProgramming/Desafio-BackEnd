@@ -6,8 +6,8 @@ using System.Net.Mime;
 
 namespace Desafio_BackEnd.Controllers
 {
-    [ApiController]
     [Route("entregadores")]
+    [ApiController]
     [Produces("application/json")]
     [Consumes(MediaTypeNames.Application.Json)]
     public class DeliveryManController : ControllerBase
@@ -46,11 +46,12 @@ namespace Desafio_BackEnd.Controllers
 
             var created = await _deliveryManService.CreateDeliveryManAsync(deliveryMan);
 
-            if(!created)
+            if (!created)
             {
                 return BadRequest(new { mensagem = "Dados inválidos." });
             }
 
+            //var action = CreatedAtAction(nameof(CreateDeliveryManAsync), "", deliveryMan);
             return Created();
         }
 

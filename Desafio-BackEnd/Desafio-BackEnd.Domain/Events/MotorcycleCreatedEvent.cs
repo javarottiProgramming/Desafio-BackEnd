@@ -6,4 +6,10 @@
         public string Model { get; set; }
         public int FabricationYear { get; set; }
     }
+
+    public class MotorcycleNotification
+    {
+        public string Id { get; set; }
+        public int FabricationYear { get; set; }
+    }
 }

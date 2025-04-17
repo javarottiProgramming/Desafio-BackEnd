@@ -33,6 +33,11 @@ var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
         e.UseMessageRetry(p => p.Interval(3, 100));
         e.Consumer<MotorcycleCreatedConsumer>();
     });
+
+    cfg.ReceiveEndpoint("challenge.queue.motorcycle.notification", e =>
+    {
+        e.Consumer<MotorcycleNotificationConsumer>();
+    });
 });
 
 

@@ -31,12 +31,12 @@ namespace Desafio_BackEnd.Services
             {
                 var motorcycleEntity = _mapper.Map<Motorcycle>(motorcycleDto);
 
-                //var inserted = await _motorcycleRepository.CreateMotorcycleAsync(motorcycleEntity);
+                var inserted = await _motorcycleRepository.CreateMotorcycleAsync(motorcycleEntity);
 
-                if (motorcycleDto.FabricationYear == 2024)
+                if (inserted)
                     await _bus.Publish(_mapper.Map<MotorcycleCreatedEvent>(motorcycleDto));
 
-                return await Task.FromResult(true);
+                return await Task.FromResult(inserted);
             }
             catch (Npgsql.PostgresException ex)
             {

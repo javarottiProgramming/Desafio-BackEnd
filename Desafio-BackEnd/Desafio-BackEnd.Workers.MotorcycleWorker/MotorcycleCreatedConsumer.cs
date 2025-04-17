@@ -12,7 +12,26 @@ namespace Desafio_BackEnd.Workers.MotorcycleWorker
                 $" {message.FabricationYear}");
 
 
-            //TODO Criar notificacao 2024
+            if (message.FabricationYear == 2024)
+            {
+                Console.WriteLine($"Registration Notification Send");
+                context.Publish<MotorcycleNotification>(new
+                {
+                    message.Id,
+                    message.FabricationYear
+                });
+            }
+
+            return Task.CompletedTask;
+        }
+    }
+
+    public class MotorcycleNotificationConsumer : IConsumer<MotorcycleNotification>
+    {
+        public Task Consume(ConsumeContext<MotorcycleNotification> context)
+        {
+            var message = context.Message;
+            Console.WriteLine($"{message.Id} Notification Received");
 
             return Task.CompletedTask;
         }

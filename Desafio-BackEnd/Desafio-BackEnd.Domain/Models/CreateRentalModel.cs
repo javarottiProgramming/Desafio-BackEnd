@@ -54,7 +54,7 @@ namespace Desafio_BackEnd.Domain.Models
                 30 => 22.0m,
                 45 => 20.0m,
                 50 => 18.0m,
-                _ => throw new ArgumentException("Plano inválido.")
+                _ => 0.0m
             };
         }
     }

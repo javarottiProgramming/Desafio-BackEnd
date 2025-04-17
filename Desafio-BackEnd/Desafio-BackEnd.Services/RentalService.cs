@@ -108,6 +108,8 @@ namespace Desafio_BackEnd.Services
                     return false;
                 }
 
+                //TODO Organizar
+
                 #region desmembrar
                 var rental = await _rentalRepository.GetRentalByIdAsync(rentalId);
 
