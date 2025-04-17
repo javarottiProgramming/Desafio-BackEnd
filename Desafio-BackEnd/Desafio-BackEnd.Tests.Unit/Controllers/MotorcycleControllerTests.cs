@@ -6,6 +6,8 @@ using Desafio_BackEnd.Domain.Dtos;
 using Desafio_BackEnd.Domain.Interfaces.Services;
 using FluentValidation;
 using FluentValidation.Results;
+using Desafio_BackEnd.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Desafio_BackEnd.Tests.Unit.Controllers;
 
@@ -14,14 +16,18 @@ public class MotorcycleControllerTests
     private readonly Mock<IValidator<MotorcycleDto>> _validatorMock;
     private readonly Mock<IValidator<MotorcyclePlateUpdateDto>> _validatorUpMock;
     private readonly Mock<IMotorcycleService> _serviceMock;
+    private readonly Mock<ILogger<MotorcycleController>> _loggerMock;
+
     private readonly MotorcycleController _controller;
+
 
     public MotorcycleControllerTests()
     {
         _validatorMock = new Mock<IValidator<MotorcycleDto>>();
         _validatorUpMock = new Mock<IValidator<MotorcyclePlateUpdateDto>>();
         _serviceMock = new Mock<IMotorcycleService>();
-        _controller = new MotorcycleController(_validatorMock.Object, _validatorUpMock.Object, _serviceMock.Object);
+        _loggerMock = new Mock<ILogger<MotorcycleController>>();
+        _controller = new MotorcycleController(_validatorMock.Object, _validatorUpMock.Object, _serviceMock.Object, _loggerMock.Object);
     }
 
     [Fact]

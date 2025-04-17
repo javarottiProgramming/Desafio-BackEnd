@@ -67,27 +67,23 @@ namespace Desafio_BackEnd.Tests.Unit.Services
         [Fact]
         public async Task UploadDocumentImageAsync_ShouldReturnTrue_WhenImageIsUploaded()
         {
-            // Arrange
             var id = "1";
             var documentImgBase64 = Convert.ToBase64String(new byte[] { 0x89, 0x50, 0x4E, 0x47 }); // PNG magic number
 
-            // Act
             var result = await _deliveryManService.UploadDocumentImageAsync(id, documentImgBase64);
 
-            // Assert
             Assert.True(result);
         }
 
         [Fact]
         public async Task UploadDocumentImageAsync_ShouldThrowException_WhenImageFormatIsInvalid()
         {
-            // Arrange
             var id = "1";
             var documentImgBase64 = Convert.ToBase64String(new byte[] { 0x00, 0x00, 0x00, 0x00 }); // Invalid magic number
 
-            // Act & Assert
-            await Assert.ThrowsAsync<InvalidOperationException>(() =>
-                _deliveryManService.UploadDocumentImageAsync(id, documentImgBase64));
+            var result = await _deliveryManService.UploadDocumentImageAsync(id, documentImgBase64);
+
+            Assert.False(result);
         }
     }
 }

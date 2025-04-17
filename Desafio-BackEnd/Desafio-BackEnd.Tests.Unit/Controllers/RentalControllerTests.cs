@@ -7,6 +7,7 @@ using Desafio_BackEnd.Domain.Interfaces.Services;
 using FluentValidation;
 using FluentValidation.Results;
 using Desafio_BackEnd.Domain.Models;
+using Microsoft.Extensions.Logging;
 
 namespace Desafio_BackEnd.Tests.Unit.Controllers;
 
@@ -14,13 +15,16 @@ public class RentalControllerTests
 {
     private readonly Mock<IValidator<CreateRentalModel>> _validatorMock;
     private readonly Mock<IRentalService> _serviceMock;
+    private readonly Mock<ILogger<RentalController>> _loggerMock;
+
     private readonly RentalController _controller;
 
     public RentalControllerTests()
     {
         _validatorMock = new Mock<IValidator<CreateRentalModel>>();
         _serviceMock = new Mock<IRentalService>();
-        _controller = new RentalController(_serviceMock.Object, _validatorMock.Object);
+        _loggerMock = new Mock<ILogger<RentalController>>();
+        _controller = new RentalController(_serviceMock.Object, _validatorMock.Object, _loggerMock.Object);
     }
 
     [Fact]
