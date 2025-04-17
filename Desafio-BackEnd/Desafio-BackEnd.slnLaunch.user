@@ -4,7 +4,8 @@
     "Projects": [
       {
         "Path": "Desafio-BackEnd\\Desafio-BackEnd.csproj",
-        "Action": "Start"
+        "Action": "Start",
+        "DebugTarget": "https"
       },
       {
         "Path": "Desafio-BackEnd.Workers.MotorcycleWorker\\Desafio-BackEnd.Workers.MotorcycleWorker.csproj",

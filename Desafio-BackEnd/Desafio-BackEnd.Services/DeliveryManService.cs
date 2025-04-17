@@ -14,8 +14,8 @@ namespace Desafio_BackEnd.Services
         private readonly IDeliveryManRepository _deliveryManRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<DeliveryManService> _logger;
-        
-        public DeliveryManService(IDeliveryManRepository deliveryManRepository, 
+
+        public DeliveryManService(IDeliveryManRepository deliveryManRepository,
             IMapper mapper, ILogger<DeliveryManService> logger)
         {
             _deliveryManRepository = deliveryManRepository;
@@ -52,7 +52,6 @@ namespace Desafio_BackEnd.Services
             {
                 //TODO Extrair metodo
 
-                //converter base64 para byte[]
                 var fileBytes = Convert.FromBase64String(documentImgBase64);
 
                 string fileExtension = GetImageExtension(fileBytes);
@@ -69,7 +68,7 @@ namespace Desafio_BackEnd.Services
                 }
 
                 //salvar o arquivo em um diretório
-                
+
                 var filePath = Path.Combine(Directory.GetCurrentDirectory(), "uploads", $"{id}.{fileExtension}");
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
@@ -77,15 +76,15 @@ namespace Desafio_BackEnd.Services
                     await fileStream.WriteAsync(fileBytes, 0, fileBytes.Length);
                 }
 
-                //TODO Fazer chamada para base de dados para salvar a data de upload do arquivo (CreateDate | UpdateDate)
+                _logger.LogInformation($"Drivers License image uploaded to id: {id}");
 
-                return await Task.FromResult(true);
+                return true;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                _logger.LogError($"Error while upload delivery man document: {ex.Message}");
+                return false;
             }
         }
 

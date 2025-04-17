@@ -14,11 +14,14 @@ namespace Desafio_BackEnd.Controllers
     {
         private readonly IValidator<DeliveryManDto> _validator;
         private readonly IDeliveryManService _deliveryManService;
+        private readonly ILogger<DeliveryManController> _logger;
 
-        public DeliveryManController(IValidator<DeliveryManDto> validator, IDeliveryManService deliveryManService)
+
+        public DeliveryManController(IValidator<DeliveryManDto> validator, IDeliveryManService deliveryManService, ILogger<DeliveryManController> logger)
         {
             _validator = validator;
             _deliveryManService = deliveryManService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Desafio_BackEnd.Controllers
                 var errorMessages = result.Errors.Select(x => x.ErrorMessage).ToList();
                 foreach (var item in errorMessages)
                 {
-                    Console.WriteLine(item);
+                    _logger.LogError(item);
                 }
 
                 return BadRequest(new { mensagem = "Dados inválidos." });
@@ -66,9 +69,7 @@ namespace Desafio_BackEnd.Controllers
         [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UploadDocumentImageAsync(string id, [FromBody] DeliveryManDtoFileUpload file)
         {
-            //TODO validar formato da imagem e valido extensao png ou bmp
-            //TODO corrigir parametro string($binary)
-
+            
             if (file == null || string.IsNullOrEmpty(file.DocumentImgBase64))
             {
                 return BadRequest(new { mensagem = "Dados inválidos." });

@@ -15,16 +15,18 @@ namespace Desafio_BackEnd.Controllers
     {
         private readonly IRentalService _rentalService;
         private readonly IValidator<CreateRentalModel> _validator;
+        private readonly ILogger<RentalController> _logger;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalController"/> class.
         /// </summary>
         /// <param name="rentalService">Service for rental operations.</param>
         /// <param name="validator">Validator for rental creation models.</param>
-        public RentalController(IRentalService rentalService, IValidator<CreateRentalModel> validator)
+        public RentalController(IRentalService rentalService, IValidator<CreateRentalModel> validator, ILogger<RentalController> logger)
         {
             _rentalService = rentalService;
             _validator = validator;
+            _logger = logger;
         }
 
         /// <summary>
@@ -44,7 +46,7 @@ namespace Desafio_BackEnd.Controllers
                 var errorMessages = result.Errors.Select(x => x.ErrorMessage).ToList();
                 foreach (var item in errorMessages)
                 {
-                    Console.WriteLine(item);
+                    _logger.LogError(item);
                 }
 
                 return BadRequest(new { mensagem = "Dados inválidos." });

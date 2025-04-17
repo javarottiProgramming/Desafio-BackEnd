@@ -15,12 +15,15 @@ namespace Desafio_BackEnd.Controllers
         private readonly IValidator<MotorcycleDto> _validator;
         private readonly IValidator<MotorcyclePlateUpdateDto> _validatorUp;
         private readonly IMotorcycleService _motorcycleService;
+        private readonly ILogger<MotorcycleController> _logger;
 
-        public MotorcycleController(IValidator<MotorcycleDto> validator, IValidator<MotorcyclePlateUpdateDto> validatorUp, IMotorcycleService motorcycleService)
+
+        public MotorcycleController(IValidator<MotorcycleDto> validator, IValidator<MotorcyclePlateUpdateDto> validatorUp, IMotorcycleService motorcycleService, ILogger<MotorcycleController> logger)
         {
             _validator = validator;
             _validatorUp = validatorUp;
             _motorcycleService = motorcycleService;
+            _logger = logger;
         }
 
         /// <summary>
@@ -31,17 +34,17 @@ namespace Desafio_BackEnd.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(object), StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult> CreateMotorcycleAsync([FromBody] MotorcycleDto moto)
+        public async Task<IActionResult> CreateMotorcycleAsync([FromBody] MotorcycleDto moto)
         {
             var result = await _validator.ValidateAsync(moto);
 
             if (!result.IsValid)
             {
                 var errorMessages = result.Errors.Select(x => x.ErrorMessage).ToList();
-                foreach (var item in errorMessages)
-                {
-                    Console.WriteLine(item);
-                }
+                var errorMessagesSplit = String.Join(" | ", errorMessages);
+
+                _logger.LogError(errorMessagesSplit);
+
                 return BadRequest(new { mensagem = "Dados inválidos." });
             }
 
@@ -91,11 +94,10 @@ namespace Desafio_BackEnd.Controllers
             if (!result.IsValid)
             {
                 var errorMessages = result.Errors.Select(x => x.ErrorMessage).ToList();
+                var errorMessagesSplit = String.Join(" | ", errorMessages);
 
-                foreach (var item in errorMessages)
-                {
-                    Console.WriteLine(item);
-                }
+                _logger.LogError(errorMessagesSplit);
+
                 return BadRequest(new { mensagem = "Dados inválidos." });
             }
 

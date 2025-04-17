@@ -7,10 +7,11 @@ namespace Desafio_BackEnd.Domain.Validators
     {
         public MotorcycleValidator()
         {
-            RuleFor(x => x.Id).NotNull();
-            RuleFor(x => x.FabricationYear).NotNull().InclusiveBetween(1951, DateTime.UtcNow.Year);
-            RuleFor(x => x.Model).NotNull().NotEmpty().MaximumLength(100);
-            RuleFor(x => x.Plate).NotNull().NotEmpty().MaximumLength(8); //TODO Melhorar validacoes?
+            RuleFor(x => x.Id).NotNull().NotEmpty().WithMessage("'identificador' is required");
+            RuleFor(x => x.FabricationYear).NotNull().WithMessage("'ano' is required")
+                .InclusiveBetween(1951, DateTime.UtcNow.Year).WithMessage("'ano' is invalid");
+            RuleFor(x => x.Model).NotNull().NotEmpty().WithMessage("'modelo' is required");
+            RuleFor(x => x.Plate).NotNull().NotEmpty().WithMessage("'placa' is required");
         }
     }
 
@@ -18,7 +19,7 @@ namespace Desafio_BackEnd.Domain.Validators
     {
         public MotorcycleUpdateValidator()
         {
-            RuleFor(x => x.Plate).NotNull().NotEmpty().MaximumLength(8); //TODO Melhorar validacoes?
+            RuleFor(x => x.Plate).NotNull().NotEmpty().WithMessage("'placa' is required");
         }
     }
 }
