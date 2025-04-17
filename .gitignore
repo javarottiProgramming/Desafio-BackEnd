@@ -1,17 +1,27 @@
 ﻿################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
+# Ignore bin and obj folders
+bin/
+obj/
 
-/FN.Store/.vs/FN.Store/v15/Server/sqlite3
-/Desafio-BackEnd/.vs/Desafio-BackEnd/CopilotIndices
-/Desafio-BackEnd/.vs/Desafio-BackEnd/DesignTimeBuild
-/Desafio-BackEnd/.vs/Desafio-BackEnd/v17
-/Desafio-BackEnd/.vs/ProjectEvaluation
-/Desafio-BackEnd/Desafio-BackEnd/bin/Debug/net8.0
-/Desafio-BackEnd/Desafio-BackEnd/obj
-/Desafio-BackEnd/Desafio-BackEnd.Domain/bin/Debug/net8.0
-/Desafio-BackEnd/Desafio-BackEnd.Domain/obj
-/Desafio-BackEnd/Desafio-BackEnd.Services/bin/Debug/net8.0
-/Desafio-BackEnd/Desafio-BackEnd.Services/obj/Debug/net8.0
-/Desafio-BackEnd/Desafio-BackEnd.Services/obj
-/Desafio-BackEnd/.vs/Desafio-BackEnd/FileContentIndex
+# Ignore build artifacts
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# Ignore user-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore publish output
+publish/
+
+# Visual Studo 2015 cache/options directory
+.vs/
+/Desafio-BackEnd/Desafio-BackEnd/uploads
+/src/Challenge.BackEnd.Presentation.API/uploads

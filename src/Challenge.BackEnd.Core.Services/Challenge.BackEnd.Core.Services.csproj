@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Challenge.BackEnd.Core.Services</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Challenge.BackEnd.Infrastructure.Data\Challenge.BackEnd.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\Challenge.BackEnd.Core.Domain\Challenge.BackEnd.Core.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="8.4.0" />
+  </ItemGroup>
+
+</Project>
