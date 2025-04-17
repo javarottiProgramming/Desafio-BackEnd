@@ -19,18 +19,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Desafio-BackEnd.Data\Desafio-BackEnd.Data.csproj" />
-    <ProjectReference Include="..\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
-    <ProjectReference Include="..\Desafio-BackEnd.Services\Desafio-BackEnd.Services.csproj" />
-    <ProjectReference Include="..\Desafio-BackEnd\Desafio-BackEnd.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Controllers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Desafio-BackEnd.Services\Desafio-BackEnd.Services.csproj" />
+    <ProjectReference Include="..\..\src\Desafio-BackEnd\Desafio-BackEnd.csproj" />
   </ItemGroup>
 
 </Project>

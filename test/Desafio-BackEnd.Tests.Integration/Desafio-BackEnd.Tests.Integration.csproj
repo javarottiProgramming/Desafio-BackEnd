@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Desafio-BackEnd.Data\Desafio-BackEnd.Data.csproj" />
-    <ProjectReference Include="..\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
-    <ProjectReference Include="..\Desafio-BackEnd.Utils\Desafio-BackEnd.Utils.csproj" />
+    <ProjectReference Include="..\..\src\Desafio-BackEnd.Data\Desafio-BackEnd.Data.csproj" />
+    <ProjectReference Include="..\..\src\Desafio-BackEnd.Domain\Desafio-BackEnd.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Desafio-BackEnd.Utils\Desafio-BackEnd.Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>
