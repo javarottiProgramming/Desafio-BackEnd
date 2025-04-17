@@ -10,6 +10,7 @@ using Desafio_BackEnd.Domain.Models;
 using Desafio_BackEnd.Domain.Validators;
 using Desafio_BackEnd.Services;
 using FluentValidation;
+using MassTransit;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -66,6 +67,14 @@ builder.Services.AddSwaggerGen(c =>
 
     c.MapType<object>(() => new OpenApiSchema { Type = "object", Nullable = true });
 
+});
+
+builder.Services.AddMassTransit(bus =>
+{
+    bus.UsingRabbitMq((ctx, busConfigurator) =>
+    {
+        busConfigurator.Host(builder.Configuration.GetConnectionString("RabbitMq"));
+    });
 });
 
 var app = builder.Build();

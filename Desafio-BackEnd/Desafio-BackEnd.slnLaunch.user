@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Desafio-BackEnd\\Desafio-BackEnd.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Desafio-BackEnd.Workers.MotorcycleWorker\\Desafio-BackEnd.Workers.MotorcycleWorker.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

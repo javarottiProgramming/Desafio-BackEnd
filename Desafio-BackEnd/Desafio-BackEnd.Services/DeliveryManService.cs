@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Desafio_BackEnd.Domain.Dtos;
 using Desafio_BackEnd.Domain.Entities;
+using Desafio_BackEnd.Domain.Events;
 using Desafio_BackEnd.Domain.Interfaces.Repositories;
 using Desafio_BackEnd.Domain.Interfaces.Services;
+using MassTransit;
 using Microsoft.Extensions.Logging;
 
 namespace Desafio_BackEnd.Services
@@ -12,8 +14,9 @@ namespace Desafio_BackEnd.Services
         private readonly IDeliveryManRepository _deliveryManRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<DeliveryManService> _logger;
-
-        public DeliveryManService(IDeliveryManRepository deliveryManRepository, IMapper mapper, ILogger<DeliveryManService> logger)
+        
+        public DeliveryManService(IDeliveryManRepository deliveryManRepository, 
+            IMapper mapper, ILogger<DeliveryManService> logger)
         {
             _deliveryManRepository = deliveryManRepository;
             _mapper = mapper;

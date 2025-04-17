@@ -30,3 +30,5 @@
 /Desafio-BackEnd/Desafio-BackEnd.Tests.Unit/obj
 /Desafio-BackEnd/Desafio-BackEnd.Utils/bin/Debug/net8.0
 /Desafio-BackEnd/Desafio-BackEnd.Utils/obj
+/Desafio-BackEnd/Desafio-BackEnd.Workers.MotorcycleWorker/bin/Debug/net8.0
+/Desafio-BackEnd/Desafio-BackEnd.Workers.MotorcycleWorker/obj

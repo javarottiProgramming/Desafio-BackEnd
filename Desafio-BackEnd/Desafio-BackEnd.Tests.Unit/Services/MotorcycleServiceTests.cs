@@ -3,6 +3,7 @@ using Desafio_BackEnd.Domain.Dtos;
 using Desafio_BackEnd.Domain.Entities;
 using Desafio_BackEnd.Domain.Interfaces.Repositories;
 using Desafio_BackEnd.Services;
+using MassTransit;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
@@ -15,16 +16,21 @@ namespace Desafio_BackEnd.Tests.Unit.Services
         private readonly Mock<IMapper> _mapperMock;
         private readonly Mock<ILogger<MotorcycleService>> _loggerMock;
         private readonly MotorcycleService _motorcycleService;
+        private readonly IBus _busMock;
 
         public MotorcycleServiceTests()
         {
             _motorcycleRepositoryMock = new Mock<IMotorcycleRepository>();
+
             _mapperMock = new Mock<IMapper>();
             _loggerMock = new Mock<ILogger<MotorcycleService>>();
+            _busMock = Mock.Of<IBus>();
+
             _motorcycleService = new MotorcycleService(
                 _motorcycleRepositoryMock.Object,
                 _mapperMock.Object,
-                _loggerMock.Object
+                _loggerMock.Object,
+                _busMock
             );
         }
 

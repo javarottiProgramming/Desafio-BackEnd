@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Desafio_BackEnd.Domain.Events;
+using MassTransit;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Desafio_BackEnd.Controllers
 {
@@ -6,6 +8,14 @@ namespace Desafio_BackEnd.Controllers
     [Route("testes")]
     public class TestsController : ControllerBase
     {
+        private readonly IBus _bus;
+
+        public TestsController(IBus bus)
+        {
+            _bus = bus;
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> Index([FromForm] FileUpload files)
         {
@@ -62,6 +72,19 @@ namespace Desafio_BackEnd.Controllers
 
             // Retornar null se o formato não for reconhecido
             return null;
+        }
+
+        [HttpPost("send_motorcycle_event")]
+        public async Task<IActionResult> SendMotorcycleEvent()
+        {
+            await _bus.Publish(new MotorcycleCreatedEvent
+            {
+                Id = "moto123",
+                FabricationYear = 2024,
+                Model = "BIS"
+            });
+
+            return Ok();
         }
     }
 

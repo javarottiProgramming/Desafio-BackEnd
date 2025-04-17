@@ -23,14 +23,7 @@ namespace Desafio_BackEnd.Data.Repositories
 
             using (IDbConnection connection = _databaseConnection.CreateConnection())
             {
-                //TODO testar passando direto o parametro
-                var result = await connection.ExecuteAsync(query, new
-                {
-                    motorcycle.Id,
-                    motorcycle.FabricationYear,
-                    motorcycle.Model,
-                    motorcycle.Plate
-                });
+                var result = await connection.ExecuteAsync(query, motorcycle);
 
                 return await Task.FromResult(result > 0);
             }

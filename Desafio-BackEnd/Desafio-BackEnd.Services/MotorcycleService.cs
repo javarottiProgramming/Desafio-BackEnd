@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using Desafio_BackEnd.Domain.Dtos;
 using Desafio_BackEnd.Domain.Entities;
+using Desafio_BackEnd.Domain.Events;
 using Desafio_BackEnd.Domain.Interfaces.Repositories;
 using Desafio_BackEnd.Domain.Interfaces.Services;
+using MassTransit;
 using Microsoft.Extensions.Logging;
 
 namespace Desafio_BackEnd.Services
@@ -12,23 +14,29 @@ namespace Desafio_BackEnd.Services
         private readonly IMotorcycleRepository _motorcycleRepository;
         private readonly IMapper _mapper;
         private readonly ILogger<MotorcycleService> _logger;
+        private readonly IBus _bus;
 
-        public MotorcycleService(IMotorcycleRepository motorcycleRepository, IMapper mapper, ILogger<MotorcycleService> logger)
+        public MotorcycleService(IMotorcycleRepository motorcycleRepository,
+            IMapper mapper, ILogger<MotorcycleService> logger, IBus bus)
         {
             _motorcycleRepository = motorcycleRepository;
             _mapper = mapper;
             _logger = logger;
+            _bus = bus;
         }
 
-        public async Task<bool> CreateMotorcycleAsync(MotorcycleDto motorcycle)
+        public async Task<bool> CreateMotorcycleAsync(MotorcycleDto motorcycleDto)
         {
             try
             {
-                var motorcycleEntity = _mapper.Map<Motorcycle>(motorcycle);
+                var motorcycleEntity = _mapper.Map<Motorcycle>(motorcycleDto);
 
-                var inserted = await _motorcycleRepository.CreateMotorcycleAsync(motorcycleEntity);
+                //var inserted = await _motorcycleRepository.CreateMotorcycleAsync(motorcycleEntity);
 
-                return await Task.FromResult(inserted);
+                if (motorcycleDto.FabricationYear == 2024)
+                    await _bus.Publish(_mapper.Map<MotorcycleCreatedEvent>(motorcycleDto));
+
+                return await Task.FromResult(true);
             }
             catch (Npgsql.PostgresException ex)
             {
@@ -40,10 +48,6 @@ namespace Desafio_BackEnd.Services
             }
 
             return false;
-
-            //Quando a moto for cadastrada a aplicação deverá gerar um evento de moto cadastrada
-            //Todo: Implementar o evento de moto cadastrada com trycatch.
-
 
         }
 
