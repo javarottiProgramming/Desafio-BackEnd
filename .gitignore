@@ -24,3 +24,4 @@ publish/
 # Visual Studo 2015 cache/options directory
 .vs/
 /Desafio-BackEnd/Desafio-BackEnd/uploads
+/src/Challenge.BackEnd.Presentation.API/uploads
