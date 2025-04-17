@@ -14,18 +14,14 @@ Aplicação para gerenciar aluguel de motos e entregadores.
 
     git clone https://github.com/javarottiProgramming/Desafio-BackEnd.git
 
-2. Restaure as dependências do projeto:
-  
-3. Configure o banco de dados:
-    1. Crie o banco de dados no PostgreSQL a partir dos scripts abaixo (execute em ordem).
-        1. [1-Create Database](scripts-database/1-Create Database.sql)
-        1. [2 - Create User](scripts-database/2 - Create User.sql)
-        1. [3 - Create tables](scripts-database/3 - Create tables.sql)
-        1. [4 - Insert database default](scripts-database/4 - Insert database default.sql)
+2. Restaure as dependências do projeto e execute o Build:
 
+3. Configure o banco de dados:
+    1. Crie o banco de dados no seu server PostgreSQL e execute os scripts contidos na pasta "scripts-database" em ordem.
+        
 4. Configure a string de conexão com sistema de mensageria RabbitMQ em appSettings:
 
-5. Rode a aplicação no perfil pré-configurado "challenge":
+5. Rode a aplicação no perfil pré-configurado no visual studio: "challenge"
 
 
 # Swagger API
