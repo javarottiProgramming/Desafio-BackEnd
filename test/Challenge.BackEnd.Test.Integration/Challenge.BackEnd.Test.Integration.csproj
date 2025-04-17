@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Desafio-BackEnd.Data\Challenge.BackEnd.Infrastructure.Data.csproj" />
-    <ProjectReference Include="..\..\src\Desafio-BackEnd.Domain\Challenge.BackEnd.Core.Domain.csproj" />
-    <ProjectReference Include="..\..\src\Desafio-BackEnd.Utils\Challenge.BackEnd.Core.Utils.csproj" />
+    <ProjectReference Include="..\..\src\Challenge.BackEnd.Core.Domain\Challenge.BackEnd.Core.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Challenge.BackEnd.Core.Utils\Challenge.BackEnd.Core.Utils.csproj" />
+    <ProjectReference Include="..\..\src\Challenge.BackEnd.Infrastructure.Data\Challenge.BackEnd.Infrastructure.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>

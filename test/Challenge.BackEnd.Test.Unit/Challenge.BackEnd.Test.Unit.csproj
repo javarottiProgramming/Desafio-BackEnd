@@ -27,9 +27,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Desafio-BackEnd.Domain\Challenge.BackEnd.Core.Domain.csproj" />
-    <ProjectReference Include="..\..\src\Desafio-BackEnd.Services\Challenge.BackEnd.Core.Services.csproj" />
-    <ProjectReference Include="..\..\src\Desafio-BackEnd\Challenge.BackEnd.Presentation.API.csproj" />
+    <ProjectReference Include="..\..\src\Challenge.BackEnd.Core.Domain\Challenge.BackEnd.Core.Domain.csproj" />
+    <ProjectReference Include="..\..\src\Challenge.BackEnd.Core.Services\Challenge.BackEnd.Core.Services.csproj" />
+    <ProjectReference Include="..\..\src\Challenge.BackEnd.Presentation.API\Challenge.BackEnd.Presentation.API.csproj" />
   </ItemGroup>
 
 </Project>

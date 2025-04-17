@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Desafio-BackEnd.Domain\Challenge.BackEnd.Core.Domain.csproj" />
+    <ProjectReference Include="..\Challenge.BackEnd.Core.Domain\Challenge.BackEnd.Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>
